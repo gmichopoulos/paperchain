@@ -1,0 +1,233 @@
+body {
+  background: url(../images/textured-paper.png);
+  font-family: 'Merriweather Sans', 'Verdana', sans-serif;
+}
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+  color: #000;
+}
+
+/* HEADER */
+
+#headmast {
+  height: 95px;
+}
+
+#logo {
+  padding: 20px;
+  color: #09d;
+  font-size: 25px;
+  font-weight: 800;
+}
+
+#topTear {
+  position: absolute;
+  width: 100%;
+  background: url(../images/torn-top.png) repeat-x left top;
+  top: 82px;
+  height: 23px;
+}
+
+#banner {
+  background: url(../images/banner-bg.png);
+  color: #fff;
+}
+
+#banner h2 {
+  text-align: center;
+  padding: 15px 0 5px 0;
+  font-weight: 300;
+}
+
+#banner strong {
+  font-weight: 700;
+}
+
+#banner .write {
+  font-family: 'Pt Serif', serif;
+  font-size: 50px;
+  font-style: italic;
+  text-align: center;
+  padding: 10px 0 15px 0;
+}
+
+#banner .write a {
+  color: #fff;
+  text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.34);
+}
+
+#container {
+  position: relative;
+}
+
+#bottomTear {
+  position: relative;
+  width: 100%;
+  background: url(../images/torn-bottom.png) repeat-x left top;
+  top: -16px;
+  height: 23px;
+}
+
+/* CHAINS */
+
+.chains {
+  height: 300px;
+}
+
+.chain {
+  margin-bottom: 25px;
+}
+
+.chain .title {
+  color: #09d;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.tip, .writeTip {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.tip .left, .tip .center, .tip .right {
+  float: left;
+  height: 28px;
+}
+
+.tip .left {
+  background: url(../images/tip-left.png) no-repeat;
+  width: 23px;
+}
+
+.tip .center {
+  background: #aaa;
+  width: auto;
+  line-height: 28px;
+}
+
+.tip .right {
+  background: url(../images/tip-right.png) no-repeat;
+  width: 14px;
+}
+
+.tip a {
+  color: #fff;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.writeTip .left, .writeTip .center, .writeTip .right {
+  float: left;
+  height: 48px;
+}
+
+.writeTip .left {
+  background: url(../images/writetip-left.png);
+  width: 26px;
+}
+
+.writeTip .center {
+  background: #09d;
+  width: auto;
+  line-height: 48px;
+}
+
+.writeTip .right {
+  background: url(../images/writetip-right.png);
+  width: 14px;
+}
+
+.writeTip a {
+  font-family: 'Pt Serif', serif;
+  color: #fff;
+  text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.34);
+  font-style: italic;
+  font-size: 26px;
+}
+
+.stats a {
+  font-size: 12px;
+  color: #aaa;
+  text-align: center;
+  display: block;
+  font-weight: 400;
+}
+
+.statsContainer {
+  margin-top: 35px;
+  color: #888;
+  text-align: center;
+}
+
+.statsContainer .title {
+  font-weight: 700;
+  display: block;
+  margin-bottom: 5px;
+  color: #aaa;
+}
+
+.statsBox {
+  background: #fff;
+  padding: 25px 0 30px 0;
+}
+
+.stat {
+  margin-bottom: 20px;
+}
+
+.stat .data {
+  font-weight: 800;
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+
+
+/* RECENTS */
+
+#recent {
+  margin: 20px 0 50px 0;
+}
+
+.entryRow {
+  padding: 10px 0;
+}
+
+.entry {
+  height: 175px;
+  background: #fff;
+  color: #888;
+  font-size: 12px;
+}
+
+.entry .title {
+  padding: 10px 0 0 15px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #222;
+}
+
+.entry .text {
+  padding: 15px;
+  color: #444;
+  font-family: 'Pt Serif', serif;
+  font-size: 14px;
+  line-height: 140%;
+}
+
+.entry .time {
+  float: left;
+  padding-left: 15px;
+}
+
+.entry .chain {
+  float: right;
+  padding-right: 15px;
+}
+
+/* BOILERPLATE */
+
+.clear {
+  clear: both;
+}
