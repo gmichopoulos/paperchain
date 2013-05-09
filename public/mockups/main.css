@@ -9,6 +9,10 @@ a {
   color: #000;
 }
 
+a:hover {
+  color: #09d;
+}
+
 /* HEADER */
 
 #headmast {
@@ -16,10 +20,67 @@ a {
 }
 
 #logo {
-  padding: 20px;
+  padding-top: 27px;
   color: #09d;
   font-size: 25px;
   font-weight: 800;
+  font-style: italic;
+  font-family: 'Pt Serif', serif;
+}
+
+#nav {
+  text-align: right;
+  padding-top: 20px;
+  width: 460px;
+}
+
+#nav .tip {
+  margin: 0 20px 0 -10px;
+}
+
+#nav a {
+  display: inline-block;
+  padding: 0 8px;
+}
+
+#nav a.navHome {
+  width: 30px;
+  height: 30px;
+  background: url(../images/home.png) no-repeat left top;
+}
+
+#nav a.navHome:hover {
+  background: url(../images/home-blue.png) no-repeat left top;
+}
+
+#nav a.navSettings {
+  width: 30px;
+  height: 30px;
+  background: url(../images/settings.png) no-repeat left top;
+}
+
+#nav a.navSettings:hover {
+  background: url(../images/settings-blue.png) no-repeat left top;
+}
+
+#nav a.navLogout {
+  width: 29px;
+  height: 30px;
+  background: url(../images/logout.png) no-repeat left top;
+}
+
+#nav a.navLogout:hover {
+  background: url(../images/logout-blue.png) no-repeat left top;
+}
+
+#nav a.navUser {
+  width: 34px;
+  height: 30px;
+  background: url(../images/user.png) no-repeat left top;
+}
+
+#nav a.navUser:hover {
+  background: url(../images/user-blue.png) no-repeat left top;
 }
 
 #topTear {
@@ -56,6 +117,11 @@ a {
 #banner .write a {
   color: #fff;
   text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.34);
+}
+
+#banner .write a:hover {
+  color: #333;
+  text-shadow: 0px -1px 0px rgba(255, 255, 255, 0.48);
 }
 
 #container {
@@ -118,6 +184,10 @@ a {
   font-size: 14px;
 }
 
+.tip a:hover {
+  color: #069;
+}
+
 .writeTip .left, .writeTip .center, .writeTip .right {
   float: left;
   height: 48px;
@@ -147,12 +217,21 @@ a {
   font-size: 26px;
 }
 
+.writeTip a:hover {
+  color: #333;
+  text-shadow: 0px -1px 0px rgba(255, 255, 255, 0.48);
+}
+
 .stats a {
   font-size: 12px;
   color: #aaa;
   text-align: center;
   display: block;
   font-weight: 400;
+}
+
+.stats a:hover {
+  color: #09d;
 }
 
 .statsContainer {
@@ -186,29 +265,37 @@ a {
 
 /* RECENTS */
 
-#recent {
-  margin: 20px 0 50px 0;
+.recentLine {
+  background: url(../images/horiz-line.png) repeat-x top left;
+  width: 100%;
+  padding-top: 10px;
+  color: #09d;
+  margin-bottom: 20px;
 }
 
-.entryRow {
+#recent {
+  margin: 20px 0 0 0;
+}
+
+#recent .entryRow {
   padding: 10px 0;
 }
 
-.entry {
+#recent .entry {
   height: 175px;
   background: #fff;
   color: #888;
   font-size: 12px;
 }
 
-.entry .title {
+#recent .entry .title {
   padding: 10px 0 0 15px;
   font-weight: 700;
   font-size: 14px;
   color: #222;
 }
 
-.entry .text {
+#recent .entry .text {
   padding: 15px;
   color: #444;
   font-family: 'Pt Serif', serif;
@@ -216,14 +303,103 @@ a {
   line-height: 140%;
 }
 
-.entry .time {
+#recent .entry .time {
   float: left;
   padding-left: 15px;
 }
 
-.entry .chain {
+#recent .entry .chain {
   float: right;
   padding-right: 15px;
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  margin: 35px 0 35px 0;
+}
+
+footer a {
+  padding: 0 6px;
+  color: #aaa;
+  font-weight: 300;
+  font-size: 12px;
+
+}
+
+/* ENTRY PAGE */
+
+#entryPage .entry p {
+  font-family: 'Pt Serif';
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+#entryPage .entry .title {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+}
+
+#entryPage .entry .author {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+  font-weight: 300;
+}
+
+#entryPage .entry .line {
+  background: url(../images/horiz-line.png) repeat-x left top;
+  height: 2px;
+  width: 460px;
+  margin: 30px 80px;
+}
+
+#entryPage .sidebar {
+  margin-top: 95px;
+  text-align: right;
+  font-size: 12px;
+  color: #888;
+  font-weight: 300;
+}
+
+#entryPage .sidebar a {
+  display: inline-block;
+  color: #09d;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+#entryPage .sidebar p {
+  margin-bottom: 5px;
+}
+
+#entryPage .sidebar a:hover {
+  color: #333;
+}
+
+#entryPage .goBack, .goForward {
+  /*use jQuery for this*/
+}
+
+#entryPage #banner h1 {
+  font-size: 26px;
+  padding: 30px 0 20px 0;
+}
+
+#entryPage #banner .prev {
+  padding: 38px 0 0 0;
+}
+
+#entryPage #banner .next {
+  padding: 38px 0 0 0;
+  text-align: right;
 }
 
 /* BOILERPLATE */
