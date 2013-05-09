@@ -18,3 +18,4 @@
 
 # Ignore (secret) environment vars
 /.env
+
