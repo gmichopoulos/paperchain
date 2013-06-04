@@ -1,0 +1,2 @@
+class ChainController < ApplicationController
+end
