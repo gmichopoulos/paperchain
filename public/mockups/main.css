@@ -152,6 +152,11 @@ a:hover {
   margin-bottom: 10px;
 }
 
+.links {
+  display: inline-block;
+  padding-right: 20px;
+}
+
 .tip, .writeTip {
   display: inline-block;
   margin-left: 10px;
@@ -262,6 +267,13 @@ a:hover {
   margin-bottom: 8px;
 }
 
+/* FORMS */
+
+#newchain-dialog input {
+  font-size: 18px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
 
 /* RECENTS */
 

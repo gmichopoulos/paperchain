@@ -10,6 +10,60 @@
     <!--[if IE]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <link rel="stylesheet" href="jquery-ui-1.10.0.custom.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript">
+    $(document).ready( function() {
+
+      $('#newchain-dialog').dialog({
+        modal: true,
+        autoOpen: false,
+        draggable: false,
+        resizable: false,
+        buttons: {
+          "Begin!": function() {
+            $('#newchain-form').submit();
+            window.location = "chain.html";
+          }
+        }
+      });
+
+      $('a.newchain').click( function() {
+        $('#newchain-dialog').dialog('open');
+      });
+
+      // $('.links').bind('mouseenter', function() {
+      //   $(this).animate({
+      //     "padding-left": "+=20px",
+      //     "padding-right": "-=20px"
+      //   });
+      // });
+
+      // $('.links').bind('mouseleave', function() {
+      //   $(this).animate({
+      //     "padding-left": "-=20px",
+      //     "padding-right": "+=20px"
+      //   });
+      // });
+
+      $('.tip, .writeTip').bind('mouseenter', function() {
+        $(this).siblings('.links').animate({
+          "padding-left": "+=20px",
+          "padding-right": "-=20px"
+        });
+      });
+
+      $('.tip, .writeTip').bind('mouseleave', function() {
+        $(this).siblings('.links').animate({
+          "padding-left": "-=20px",
+          "padding-right": "+=20px"
+        });
+      });
+
+
+    });
+    </script>
 </head>
 
 <body>
@@ -37,21 +91,21 @@
     <div class="container_12">
       <div class="grid_10 chains">
         <div class="chain">
-          <img class="link" src="../images/chain-newchain.png" />
+          <div class="links"><img class="link" src="../images/chain-newchain.png" /></div>
           <div class="tip">
-            <div class="left"></div><div class="center"><a href="#">start a new chain!</a></div><div class="right"></div>
+            <div class="left"></div><div class="center"><a href="#" class="newchain">start a new chain!</a></div><div class="right"></div>
           </div>
         </div>
         <div class="chain">
           <div class="title">Daily Project</div>
-          <img src="../images/chain-start.png" /><img src="../images/chain-mid.png" /><img src="../images/chain-new.png" />
+          <div class="links"><img src="../images/chain-start.png" /><img src="../images/chain-mid.png" /><img src="../images/chain-new.png" /></div>
           <div class="writeTip">
             <div class="left"></div><div class="center"><a href="#">Write!</a></div><div class="right"></div>
           </div>
         </div>
         <div class="chain">
           <div class="title">History Term Paper</div>
-          <img src="../images/chain-start.png" /><img src="../images/chain-mid.png" /><img src="../images/chain-mid.png" /><img src="../images/chain-mid.png" /><img src="../images/chain-mid.png" /><img src="../images/chain-new.png" />
+          <div class="links"><img src="../images/chain-start.png" /><img src="../images/chain-mid.png" /><img src="../images/chain-mid.png" /><img src="../images/chain-mid.png" /><img src="../images/chain-mid.png" /><img src="../images/chain-new.png" /></div>
           <div class="tip">
             <div class="left"></div><div class="center"><a href="#">next entry in two days</a></div><div class="right"></div>
           </div>
@@ -127,7 +181,19 @@
     <a href="#">About</a><a href="#">Legal</a><a href="#">Privacy</a>
   </footer>
 
-    
+  <div id="newchain-dialog" title="Make a new chain!">
+    <form id="newchain-form">
+      <input name="title" placeholder="Name" />
+      <div>
+        Write every:
+        <select>
+          <option value="day">day</option>
+          <option value="mwf">MWF</option>
+          <option value="week">week</option>
+        </select>
+      </div>
+    </form>
+  </div>
 
 </body>
 </html>
