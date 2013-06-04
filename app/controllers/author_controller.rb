@@ -1,6 +1,6 @@
 class AuthorController < ApplicationController
 
-  skip_before_filter :require_authentication, :only => [:login, :create]
+  #skip_before_filter :require_authentication, :only => [:login, :register]
 
   def login
 
