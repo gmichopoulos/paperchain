@@ -1,6 +1,10 @@
 class AuthorController < ApplicationController
 
-  #skip_before_filter :require_authentication, :only => [:login, :register]
+  #skip_before_filter :require_authentication, :only => [:login, :create]
+
+  def authors
+      @authors = Author.find(:all)
+  end
 
   def login
 
@@ -15,6 +19,7 @@ class AuthorController < ApplicationController
     else
       redirect_to :controller => 'author', :action => 'login'
       flash[:notice] = "That was not a valid penname-password combination. Please try again."
+    end
   end
 
   def logout
