@@ -154,7 +154,6 @@ a:hover {
 
 .links {
   display: inline-block;
-  padding-right: 20px;
 }
 
 .tip, .writeTip {
@@ -269,11 +268,32 @@ a:hover {
 
 /* FORMS */
 
-#newchain-dialog input {
+#newchain-dialog input.title {
   font-size: 18px;
   padding: 5px;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
+
+#newchain-dialog input.num {
+  width: 20px;
+}
+
+#newchain-dialog .section {
+  padding: 5px 0;
+}
+
+#newchain-dialog .section-left {
+  float: left;
+  width: 50px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#newchain-dialog .section-right {
+  float: left;
+  margin-top: 10px;
+}
+
 
 /* RECENTS */
 

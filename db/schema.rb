@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20130513231409) do
 
   create_table "links", :force => true do |t|
     t.datetime "date"
+    t.text     "link_text"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
