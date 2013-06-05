@@ -14,7 +14,7 @@ class Author < ActiveRecord::Base
   validates_presence_of :last_name
 
   validates_uniqueness_of :penname
-  validates_uniqueness_of :email, :format { :with => @@email_regex, :message => "must be in proper email format!"}
+  validates_uniqueness_of :email
 
   validates :username, :format => { :with => @@username_regex, :message => "who has numbers in their pen name?" }
   validates :password, :length => { :minimum => 8, :too_short => "must be at least %{count} characters long" }
