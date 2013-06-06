@@ -3,11 +3,8 @@ class ChainController < ApplicationController
   # before_filter :check_login 
   before_filter :require_post, :only => [:post_chain]
 
-
-  def post_chain
-    @chain = Chain.new
-    @chain.author = Author.find(params[:id])
-
+  def index
+    @chain = Chain.find(params[:id])
   end
 
   def author
@@ -54,13 +51,9 @@ class ChainController < ApplicationController
     @chain.link_rate = link_rate
 
     if @chain.save
-      flash[:notice] = link_rate
-      redirect_to :action => 'author'
+      redirect_to :controller => :chain, :action => 'index', :id => @chain.id
     else
-      redirect_to :action =>'author'
+      redirect_to :back
     end
-
-
   end
-      
 end

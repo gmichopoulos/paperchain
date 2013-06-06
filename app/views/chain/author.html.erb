@@ -68,10 +68,14 @@
     </div>
     <% @author.chains.each do |chain| %>
       <div class="chain">
-        <div class="title"><%= chain.title %></div>
+        <div class="title"><a href="/chain/index/<%= chain.id %>"><%= chain.title %></a></div>
         <div class="links">
 
+          <% if chain.num_links == 0 %>
+          <img class="link" src="/images/chain-newchain.png" />
+          <% else %>
           <a href="/link/index/<%= chain.links.order("date")[0].id %>" title="<%= chain.links.order("date")[0].title %>"><img src="/images/chain-start.png" /></a><% (chain.num_links - 1).times do |i| %><a href="/link/index/<%= chain.links.order("date")[i+1].id %>" title="<%= chain.links.order("date")[i+1].title %>"><img src="/images/chain-mid.png" /></a><% end %><img src="/images/chain-new.png" />
+          <% end %>
 
         </div>
         <div class="writeTip">
@@ -99,7 +103,7 @@
 </div>
 
   <div id="newchain-dialog" title="Make a new chain!">
-    <%= form_tag("create_chain", :id => "newchain_form", :method => "post") do %>
+    <%= form_tag("/chain/create_chain", :id => "newchain_form", :method => "post") do %>
       <%= text_field_tag(:title, nil, :placeholder => "Title") %>
       <div class="section">
         <div class="section-left">Write every:</div>
@@ -123,6 +127,5 @@
         </div>
       </div>
       <div class="clear"></div>
-      <%= submit_tag "Begin!" %>
     <% end %>
   </div>
