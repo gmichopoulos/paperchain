@@ -1,9 +1,19 @@
+<% content_for :head do %>
+  <script type="text/javascript">
+    $(document).ready( function() {
+
+      $(document).tooltip();
+
+    });
+  </script>
+<% end %>
+
 <% content_for :header do %>
   <% content_for :banner do %>
     <div class="container_12">
-        <div class="grid_3 prev"><img src="/images/entry-prev.png" /> prev entry</div>
+        <div class="grid_3 prev"><% if @prev %><a href="/link/index/<%= @prev.id %>" title="<%= @prev.title %>"><img src="/images/entry-prev.png" /> prev entry</a><% end %></div>
         <div class="grid_6"><h1><%= @link.chain.title %> <img src="/images/entry-start.png" /><img src="/images/entry-mid.png" /><img src="/images/entry-mid-sel.png" /><img src="/images/entry-end.png" /></h1></div>
-        <div class="grid_3 next">next entry <img src="/images/entry-next.png" /></div>
+        <div class="grid_3 next"><% if @next %><a href="/link/index/<%= @next.id %>" title="<%= @next.title %>">next entry</a> <img src="/images/entry-next.png" /><% end %></div>
       </div>
     </div>
   <% end %>
@@ -15,21 +25,26 @@
 <% end %>
 
 <div class="container_12">
-      <div class="goBack grid_2">&nbsp;</div>
-      <div class="entry grid_8">
-        <div class="title"><%= @link.title %></div>
-        <div class="author"><%= @link.author.penname %></div>
-        <div class="line"></div>
-        <p><%= @link.link_text %></p>
-      </div>
-      <div class="grid_2">
-        <aside class="sidebar">
-          <a href="#">edit</a>
-          <p><%= @link.date.to_date().to_formatted_s(:long) %></p>
-          <p><%= @wordcount %> words</p>
-        </aside>
-        <div class="goForward">&nbsp;</div>
-      </div>
+  <% if @prev %><a href="/link/index/<%= @prev.id %>" title="<%= @prev.title %>"><% end %>
+    <div class="goBack grid_2">&nbsp;</div>
+  <% if @prev %></a><% end %>
 
-    </div>
+  <div class="entry grid_8">
+    <div class="title"><%= @link.title %></div>
+    <div class="author"><%= @link.author.penname %></div>
+    <div class="line"></div>
+    <p><%= @link.link_text %></p>
+  </div>
+  <div class="grid_2">
+    <aside class="sidebar">
+      <a href="#">edit</a>
+      <p><%= @link.date.to_date().to_formatted_s(:long) %></p>
+      <p><%= @wordcount %> words</p>
+    </aside>
+    <% if @next %><a href="/link/index/<%= @next.id %>" title="<%= @next.title %>"><% end %>
+      <div class="goForward">&nbsp;</div>
+    <% if @next %></a><% end %>
+  </div>
+
+</div>
 

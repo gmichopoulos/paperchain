@@ -3,11 +3,8 @@ class ChainController < ApplicationController
   # before_filter :check_login 
   before_filter :require_post, :only => [:post_chain]
 
-
-  def post_chain
-    @chain = Chain.new
-    @chain.author = Author.find(params[:id])
-
+  def index
+    @chain = Chain.find(params[:id])
   end
 
   def author
@@ -36,5 +33,28 @@ class ChainController < ApplicationController
         redirect_to :controller => 'author', :action => 'login'
     end 
   end
-      
+  
+  def create_chain
+    @chain = Chain.new
+    @chain.title = params[:title]
+    @chain.authors << Author.find(session[:curr_author])
+    @chain.start_date = DateTime.now
+    @chain.num_links = 0
+
+    link_rate = ''
+    if !params[:day0].nil?
+      link_rate = link_rate + '1'
+    else
+      link_rate = link_rate + '0'
+    end
+
+    @chain.link_rate = link_rate
+
+    if @chain.save
+      redirect_to :controller => :chain, :action => 'index', :id => @chain.id
+    else
+      redirect_to :back
+    end
+  end
+
 end
