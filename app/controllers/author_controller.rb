@@ -14,7 +14,7 @@ class AuthorController < ApplicationController
     @author = Author.authenticate params[:penname], params[:password]
     if @author
       session[:curr_author] = @author.id
-      redirect_to :controller => 'chain', :action => 'home', :id => @author.id
+      redirect_to :controller => 'chain', :action => 'author', :id => @author.id
       flash[:notice] = "Welcome back to Paperchain, " + @author.first_name + "!"
     else
       redirect_to :controller => 'author', :action => 'login'
@@ -34,7 +34,7 @@ class AuthorController < ApplicationController
   def post_register
     @author = Author.new params[:penname]
     if @author.save
-      redirect_to :controller => 'chain', :action => 'home', :id => author.id
+      redirect_to :controller => 'chain', :action => 'author', :id => author.id
       flash[:notice] = "Welcome to Paperchain, " + author.first_name + "!"
     else
       redirect_to :controller => 'author', :action => 'register'
