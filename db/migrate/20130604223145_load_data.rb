@@ -2,13 +2,13 @@ class LoadData < ActiveRecord::Migration
   def up
     # Create initial authors
     down
-    ac = Author.new(:first_name => "Alex", :last_name => "Cope", :email => "alexcope@stanford.edu", :penname => "cope_alope")
+    ac = Author.new(:first_name => "Alex", :last_name => "Cope", :email => "alexcope@stanford.edu", :penname => "copealope", :password => "bestBM4eva")
     ac.save(:validate => false)
     gm = Author.new(:first_name => "George", :last_name => "Michopoulos", :email => "giorgos@stanford.edu", :penname => "greekboy", :password => "slut")
     gm.save(:validate => false)
-    mo = Author.new(:first_name => "Mark", :last_name => "O'Meara", :email => "omeara13@stanford.edu", :penname => "mearcat")
+    mo = Author.new(:first_name => "Mark", :last_name => "O'Meara", :email => "omeara13@stanford.edu", :penname => "mearcat", :password => "starbuck")
     mo.save(:validate => false)
-    sa = Author.new(:first_name => "Shilpa", :last_name => "Apte", :email => "sapte1@stanford.edu", :penname => "shilpalicious")
+    sa = Author.new(:first_name => "Shilpa", :last_name => "Apte", :email => "sapte1@stanford.edu", :penname => "shilpalicious", :password => "thetalicious")
     sa.save(:validate => false)
 
     # Create initial chains
