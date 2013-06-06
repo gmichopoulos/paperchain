@@ -47,20 +47,39 @@
       //   });
       // });
 
+      var tip_adjust = 3;
+
+      // $('#everyday').click( function() {
+      //   $('input[name="day"]').prop('checked', true);
+      //   $(this).text('deselect');
+      //   $(this).attr('id', 'deselect');
+      // })
+
+      // $('#deselect').click( function() {
+      //   $('input[name="day"]').prop('checked', false);
+      //   $(this).text('select every day');
+      //   $(this).attr('id', 'everyday');
+      // })
+
+      $('.ends').children('input[type="text"]').focus(function() {
+        $(this).parent().children('input[type="radio"]').prop('checked', true);
+        $(this).parent().parent().children().children('input[type="radio"]').each( function() {
+          if ( $(this).prop('checked') == false ) {
+            $(this).parent().children('input[type="text"]').val('');
+          }
+        });
+      });
+
+
       $('.tip, .writeTip').bind('mouseenter', function() {
-        $(this).siblings('.links').animate({
-          "padding-left": "+=20px",
-          "padding-right": "-=20px"
+        $(this).animate({
+          "padding-left": "+=" + tip_adjust + "px",
+          "padding-right": "-=" + tip_adjust + "px"
+        }).animate({
+          "padding-left": "-=" + tip_adjust + "px",
+          "padding-right": "+=" + tip_adjust + "px"
         });
       });
-
-      $('.tip, .writeTip').bind('mouseleave', function() {
-        $(this).siblings('.links').animate({
-          "padding-left": "-=20px",
-          "padding-right": "+=20px"
-        });
-      });
-
 
     });
     </script>
@@ -183,14 +202,27 @@
 
   <div id="newchain-dialog" title="Make a new chain!">
     <form id="newchain-form">
-      <input name="title" placeholder="Name" />
-      <div>
-        Write every:
-        <select>
-          <option value="day">day</option>
-          <option value="mwf">MWF</option>
-          <option value="week">week</option>
-        </select>
+      <input class="title" name="title" placeholder="Name" />
+      <div class="section">
+        <div class="section-left">Write every:</div>
+        <div class="section-right">
+          <input type="checkbox" name="day" value="0">S</input>
+          <input type="checkbox" name="day" value="1">M</input>
+          <input type="checkbox" name="day" value="2">T</input>
+          <input type="checkbox" name="day" value="3">W</input>
+          <input type="checkbox" name="day" value="4">T</input>
+          <input type="checkbox" name="day" value="5">F</input>
+          <input type="checkbox" name="day" value="6">S</input><br />
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div class="section">
+        <div class="section-left">Ends:</div>
+        <div class="section-right">
+          <div class="ends"><input type="radio" name="ends" value="never" />After <input type="text" class="num" name="entries" /> entries</div>
+          <div class="ends"><input type="radio" name="ends" value="never" />After <input type="text" class="num" name="weeks" /> weeks</div>
+          <div class="ends"><input type="radio" name="ends" value="never" />Never</input></div>
+        </div>
       </div>
     </form>
   </div>
