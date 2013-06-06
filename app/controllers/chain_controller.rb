@@ -22,7 +22,7 @@ class ChainController < ApplicationController
         @num_words = 0
         @author.links.each do |link|
           @num_links += 1
-          @num_words += link.link_text.length
+          @num_words += link.link_text.split(" ").count
         end
 
         @num_links += @num_words/250
