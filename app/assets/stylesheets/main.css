@@ -20,12 +20,7 @@ a:hover {
 }
 
 #logo {
-  padding-top: 27px;
-  color: #09d;
-  font-size: 25px;
-  font-weight: 800;
-  font-style: italic;
-  font-family: 'Pt Serif', serif;
+  padding-top: 10px;
 }
 
 #nav {
@@ -369,12 +364,20 @@ footer a {
 
 /* ENTRY PAGE */
 
-#entryPage .entry p {
+#entryPage .entry #text {
   font-family: 'Pt Serif';
   color: #333;
   margin-bottom: 15px;
   font-size: 14px;
   line-height: 20px;
+}
+
+#entryPage .entry #text b {
+  font-weight: 700;
+}
+
+#entryPage .entry #text i {
+  font-style: italic;
 }
 
 #entryPage .entry .title {
@@ -444,6 +447,17 @@ footer a {
 #entryPage #banner .prev a, #entryPage #banner .next a {
   font-weight: 400;
   color: #fff;
+}
+
+/* WYSIHTML5 */
+
+.wysihtml5-sandbox {
+  background: transparent !important;
+  border: 0px !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  width: 620px !important;
+  height: 280px !important;
 }
 
 /* BOILERPLATE */

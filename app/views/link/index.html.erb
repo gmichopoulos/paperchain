@@ -1,8 +1,40 @@
 <% content_for :head do %>
+  
+  <%= javascript_include_tag 'advanced' %>
+  <%= javascript_include_tag 'wysihtml5-0.4.0pre.min' %>
+  <%= javascript_include_tag 'wysihtml5-paperchain' %>
   <script type="text/javascript">
     $(document).ready( function() {
 
       $(document).tooltip();
+
+      var save = $("#save");
+
+      save.click( function() {
+        var text = $('#text').wysihtml5Text();
+        $.ajax({
+          type: 'POST',
+          url: '/link/save',
+          data: {
+            id: '<%= @link.id %>',
+            text: text
+          },
+          dataType: "JSON"
+        }).success(function() {
+          $('#save').hide();
+          $('#edit').show();
+          $('#text').html(text);
+        });
+      });
+
+      save.hide();
+
+      $( '#edit' ).click( function() {
+        $( '#text' ).wysihtml5();
+        $(this).hide();
+        save.show();
+      });
+
 
     });
   </script>
@@ -33,11 +65,12 @@
     <div class="title"><%= @link.title %></div>
     <div class="author"><%= @link.author.penname %></div>
     <div class="line"></div>
-    <p><%= @link.link_text %></p>
+    <div id="text"><%= @link.link_text.html_safe %></div>
   </div>
   <div class="grid_2">
     <aside class="sidebar">
-      <a href="#">edit</a>
+      <a id="save" href="#">save</a>
+      <a id="edit" href="#">edit</a>
       <p><%= @link.date.to_date().to_formatted_s(:long) %></p>
       <p><%= @wordcount %> words</p>
     </aside>
@@ -46,5 +79,10 @@
     <% if @next %></a><% end %>
   </div>
 
+</div>
+
+<div id="wysihtml5-toolbar" style="display: none;">
+  <a data-wysihtml5-command="bold">bold</a>
+  <a data-wysihtml5-command="italic">italic</a>
 </div>
 
