@@ -17,6 +17,16 @@ class ChainController < ApplicationController
     id = params[:id]
     @author = Author.find(id)
     @chains = @author.chains
+
+    @num_links = 0
+    @num_words = 0
+    @author.links.each do |link|
+      @num_links += 1
+      @num_words += link.link_text.length
+    end
+
+    @num_links += @num_words/250
+
   end
 
   def create_chain
