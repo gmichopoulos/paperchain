@@ -53,6 +53,11 @@
   <%= render :partial => "shared/header" %>
 <% end %>
 
+
+<% if flash[:notice] %> 
+    <h2> <%= flash[:notice] %> </h2> 
+<% end %> 
+
 <div class="container_12">
   <div class="grid_10 chains">
     <div class="chain">
@@ -81,11 +86,11 @@
       <span class="title">TOTAL STATS</span>
       <aside class="statsBox">
         <div class="stat">
-          <p class="data">7510</p>
+          <p class="data"><%= @num_words %></p>
           <p class="label">WORD COUNT</p>
         </div>
         <div class="stat">
-          <p class="data">85</p>
+          <p class="data"><%= @num_links %></p>
           <p class="label">TOTAL PAGES</p>
         </div>
       </aside>
