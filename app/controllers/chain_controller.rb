@@ -19,11 +19,6 @@ class ChainController < ApplicationController
     @chains = @author.chains
   end
 
-    else
-        flash[:notice] = "You have to log in to view an author page!"
-        redirect_to :controller => 'author', :action => 'login'
-    end 
-
   def create_chain
     @chain = Chain.new
     @chain.author = Author.find(params[:id])
