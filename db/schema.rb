@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20130604223145) do
     t.datetime "start_date"
     t.string   "link_rate"
     t.integer  "num_links"
-    t.datetime "last_link"
+    t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20130604223145) do
     t.integer  "chain_id"
     t.datetime "date"
     t.text     "link_text"
+    t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
