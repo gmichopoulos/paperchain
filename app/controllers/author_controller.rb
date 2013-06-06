@@ -13,9 +13,9 @@ class AuthorController < ApplicationController
   def post_login
     @author = Author.authenticate params[:penname], params[:password]
     if @author
-      session[:curr_author] = author.id
-      redirect_to :controller => 'chain', :action => 'home', :id => author.id
-      flash[:notice] = "Welcome back to Paperchain, " + author.first_name + "!"
+      session[:curr_author] = @author.id
+      redirect_to :controller => 'chain', :action => 'home', :id => @author.id
+      flash[:notice] = "Welcome back to Paperchain, " + @author.first_name + "!"
     else
       redirect_to :controller => 'author', :action => 'login'
       flash[:notice] = "That was not a valid penname-password combination. Please try again."
