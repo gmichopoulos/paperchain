@@ -29,11 +29,13 @@ class AuthorController < ApplicationController
   end
 
   def register
-    
+   # @author = Author.find(session[:curr_author])
   end
 
   def post_register
-    @author = Author.new(:penname => params[:penname], :email =>params[:email], :first_name => params[:first_name], :last_name => params[:last_name], :password => params[:password])
+    @author = Author.new(:penname => params[:penname], :email =>params[:email], 
+                          :first_name => params[:first_name], :last_name => params[:last_name], 
+                          :password => params[:password], :password_confirmation => params[:password_confirmation])
     if @author.save
       session[:curr_author] = @author.id 
       redirect_to :controller => 'chain', :action => 'author', :id => @author.id
