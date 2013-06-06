@@ -1,5 +1,13 @@
-<title>Authors List</title>
-<% @authors.each do |author| %>
-    <h2 class=listedusers><%= author.penname %></h2>
+<% content_for :banner do %>
+<h2>Authors List</h2>
 <% end %>
-<h3>DONE!</h3>
+
+<div class="container_12">
+
+<ul>
+<% @authors.each do |author| %>
+    <li><%= author.penname %></li>
+<% end %>
+</ul>
+
+</div>
