@@ -1,5 +1,13 @@
 <%= render :partial => "shared/header" %>
+
+<h2>Authors List</h2>
+
+<div class="container_12">
+
+<ul>
 <% @authors.each do |author| %>
-    <h2 class=listedusers><%= author.penname %></h2>
+    <li><%= author.penname %></li>
 <% end %>
-<h3>DONE!</h3>
+</ul>
+
+</div>

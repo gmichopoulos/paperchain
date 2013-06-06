@@ -2,13 +2,33 @@
 <html>
 <head>
   <title>Paperchain</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "reset", :media => "all" %>
+  <%= stylesheet_link_tag    "960_12_col", :media => "all" %>
+  <%= stylesheet_link_tag    "main", :media => "all" %>
+  <%= stylesheet_link_tag    "jquery-ui-1.10.0.custom", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
+  <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic|Merriweather+Sans:400,700,800,300' rel='stylesheet' type='text/css'>
+
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+  <%= yield :head %>
+
 </head>
 <body>
 
-<%= yield %>
+  <section id="main">
+    <div id="bottomTear"></div>
+
+    <%= yield %>
+
+  </section>
+
+  <footer>
+    <a href="#">About</a><a href="#">Legal</a><a href="#">Privacy</a>
+  </footer>
 
 </body>
 </html>
