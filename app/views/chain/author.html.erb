@@ -48,6 +48,11 @@
   <div class="write"><a href="#">Write!</a></div>
 <% end %>
 
+
+<% if flash[:notice] %> 
+    <h2> <%= flash[:notice] %> </h2> 
+<% end %> 
+
 <div class="container_12">
   <div class="grid_10 chains">
     <div class="chain">

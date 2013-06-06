@@ -17,6 +17,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_post
+      if !request.post?
+          raise ActionController::RoutingError.new('Not Found')
+      end
+  end
+
 end
 
 

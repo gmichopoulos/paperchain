@@ -19,8 +19,8 @@ class Author < ActiveRecord::Base
   validates :username, :format => { :with => @@username_regex, :message => "who has numbers in their pen name?" }
   validates :password, :length => { :minimum => 8, :too_short => "must be at least %{count} characters long" }
 
-  def self.authenticate(username, password)
-    find_by_username(username).try(:authenticate, password)
+  def self.authenticate(penname, password)
+    find_by_penname(penname).try(:authenticate, password)
   end
 
 end

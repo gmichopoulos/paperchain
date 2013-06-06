@@ -4,7 +4,7 @@ class LoadData < ActiveRecord::Migration
     down
     ac = Author.new(:first_name => "Alex", :last_name => "Cope", :email => "alexcope@stanford.edu", :penname => "cope_alope")
     ac.save(:validate => false)
-    gm = Author.new(:first_name => "George", :last_name => "Michopoulos", :email => "giorgos@stanford.edu", :penname => "greekboy")
+    gm = Author.new(:first_name => "George", :last_name => "Michopoulos", :email => "giorgos@stanford.edu", :penname => "greekboy", :password => "slut")
     gm.save(:validate => false)
     mo = Author.new(:first_name => "Mark", :last_name => "O'Meara", :email => "omeara13@stanford.edu", :penname => "mearcat")
     mo.save(:validate => false)
