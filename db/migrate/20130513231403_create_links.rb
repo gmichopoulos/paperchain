@@ -5,6 +5,7 @@ class CreateLinks < ActiveRecord::Migration
       t.integer :chain_id
       t.datetime :date
       t.text :link_text
+      t.string :title
       t.timestamps
     end
   end

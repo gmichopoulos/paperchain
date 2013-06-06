@@ -4,7 +4,7 @@ class CreateChains < ActiveRecord::Migration
       t.datetime :start_date
       t.string :link_rate
       t.integer :num_links
-      t.datetime :last_link
+      t.string :title
       t.timestamps
     end
   end
