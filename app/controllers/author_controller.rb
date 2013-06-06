@@ -33,18 +33,14 @@ class AuthorController < ApplicationController
   end
 
   def post_register
-    @author = Author.new params[:penname]
+    @author = Author.new(:penname => params[:penname], :email =>params[:email], :first_name => params[:first_name], :last_name => params[:last_name], :password => params[:password])
     if @author.save
-      @author.email = params[:email]
-      @author.first_name = params[:first]
-      @author.last_name = params[:last]
-      @author.password = params[:password]
-      @author.save
+      session[:curr_author] = @author.id 
       redirect_to :controller => 'chain', :action => 'author', :id => @author.id
       flash[:notice] = "Welcome to Paperchain, " + @author.first_name + "!"
     else
       redirect_to :controller => 'author', :action => 'register'
-      flash[:notice] = @author.errors
+      flash[:notice] = @author.errors.full_messages.to_sentence
     end
   end
 
