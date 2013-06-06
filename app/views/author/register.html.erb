@@ -1,0 +1,19 @@
+<% if flash[:notice] %> 
+    <h2> <%= flash[:notice] %> </h2> 
+<% end %> 
+
+<%= form_tag(:action => :post_register) do %> 
+  <%= label_tag(:register, "First Name") %> 
+  <%= text_field_tag(:first_name) %>
+  <%= label_tag(:register, "Last Name") %> 
+  <%= text_field_tag(:last_name) %>
+  <%= label_tag(:register, "Penname") %> 
+  <%= text_field_tag(:penname) %> 
+  <%= label_tag(:register, "Password") %> 
+  <%= password_field_tag(:password) %>
+  <%= label_tag(:register, "Confirm Password") %> 
+  <%= password_field_tag(:password_confirmation) %> 
+  <%= label_tag(:register, "email") %> 
+  <%= text_field_tag(:email) %> 
+  <%= submit_tag "Sign-up for Paperchain!" %> 
+<% end %>
