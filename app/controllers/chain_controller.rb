@@ -36,5 +36,31 @@ class ChainController < ApplicationController
         redirect_to :controller => 'author', :action => 'login'
     end 
   end
+
+  def create_chain
+    @chain = Chain.new
+    @chain.title = params[:title]
+    @chain.authors << Author.find(session[:curr_author])
+    @chain.start_date = DateTime.now
+    @chain.num_links = 0
+
+    link_rate = ''
+    if !params[:day0].nil?
+      link_rate = link_rate + '1'
+    else
+      link_rate = link_rate + '0'
+    end
+
+    @chain.link_rate = link_rate
+
+    if @chain.save
+      flash[:notice] = link_rate
+      redirect_to :action => 'author'
+    else
+      redirect_to :action =>'author'
+    end
+
+
+  end
       
 end

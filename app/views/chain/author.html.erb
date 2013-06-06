@@ -99,7 +99,7 @@
 </div>
 
   <div id="newchain-dialog" title="Make a new chain!">
-    <%= form_tag(:action => "create_chain", :id => "newchain_form", :method => "post") do %>
+    <%= form_tag("create_chain", :id => "newchain_form", :method => "post") do %>
       <%= text_field_tag(:title, nil, :placeholder => "Title") %>
       <div class="section">
         <div class="section-left">Write every:</div>
@@ -122,5 +122,7 @@
           <div class="ends"><%= radio_button_tag :ends, "never" %> Never</div>
         </div>
       </div>
+      <div class="clear"></div>
+      <%= submit_tag "Begin!" %>
     <% end %>
   </div>
