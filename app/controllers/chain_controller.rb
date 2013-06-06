@@ -33,7 +33,7 @@ class ChainController < ApplicationController
         redirect_to :controller => 'author', :action => 'login'
     end 
   end
-  
+
   def create_chain
     @chain = Chain.new
     @chain.title = params[:title]
@@ -56,5 +56,4 @@ class ChainController < ApplicationController
       redirect_to :back
     end
   end
-
 end
