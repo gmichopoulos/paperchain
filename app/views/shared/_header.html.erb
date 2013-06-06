@@ -2,12 +2,12 @@
   <div id="headmast" class="container_12">
     <div class="grid_3">
       <figure id="logo">
-        <%= link_to "[logo wip]", :controller => :chain, :action => :author, :id => 3 %>
+        <a href="/chain/author/<%= @author.id %>"><img src="/images/paperchain.png" /></a>
       </figure>
     </div>
     <div class="grid_3">&nbsp;</div>
     <div class="grid_6" id="nav">
-      <a class="navUser" href="#"></a><div class="tip"><div class="left"></div><div class="center"><a href="#"><%= @name %></a></div><div class="right"></div></div><a class="navHome" href="#"></a><a class="navSettings" href="#"></a><a class="navLogout" href="#"></a>
+      <a class="navUser" href="#"></a><div class="tip"><div class="left"></div><div class="center"><a href="#"><%= @author.penname %></a></div><div class="right"></div></div><a class="navHome" href="#"></a><a class="navSettings" href="#"></a><a class="navLogout" href="#"></a>
     </div>
   </div>
   <div id="topTear"></div>

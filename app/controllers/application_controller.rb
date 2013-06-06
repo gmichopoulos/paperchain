@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def check_login
     if session[:curr_author]
-      @name = Author.find_by_id(session[:curr_author]).penname
+      @author = Author.find_by_id(session[:curr_author])
       @logged_in = true
     else
       @name = "Balls Dickturd"
