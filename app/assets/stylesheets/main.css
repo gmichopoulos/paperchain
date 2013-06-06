@@ -146,7 +146,7 @@ a:hover {
 /* CHAINS */
 
 .chains {
-  height: 300px;
+  /*height: 300px;*/
 }
 
 .chain {
@@ -439,6 +439,11 @@ footer a {
 #entryPage #banner .next {
   padding: 38px 0 0 0;
   text-align: right;
+}
+
+#entryPage #banner .prev a, #entryPage #banner .next a {
+  font-weight: 400;
+  color: #fff;
 }
 
 /* BOILERPLATE */
