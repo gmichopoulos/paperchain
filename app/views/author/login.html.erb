@@ -1,0 +1,11 @@
+<% if flash[:notice] %> 
+    <h2> <%= flash[:notice] %> </h2> 
+<% end %> 
+
+<%= form_tag(:action => :post_login) do %> 
+<%= label_tag(:login, "Username") %> 
+<%= text_field_tag(:penname) %> 
+<%= label_tag(:login, "Password") %> 
+<%= password_field_tag(:password) %> 
+<%= submit_tag "Log In" %> 
+<% end %>
