@@ -37,7 +37,7 @@ class ChainController < ApplicationController
 
     else
         flash[:notice] = "You have to log in to view an author page!"
-        redirect_to :controller => 'author', :action => 'login'
+        #redirect_to :controller => 'author', :action => 'login'
     end 
   end
       
