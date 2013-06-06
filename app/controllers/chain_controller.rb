@@ -16,7 +16,6 @@ class ChainController < ApplicationController
   def author
     id = params[:id]
     @author = Author.find(id)
-    @chains = @author.chains
   end
 
   def create_chain
