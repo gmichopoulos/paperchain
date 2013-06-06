@@ -16,7 +16,7 @@ class Author < ActiveRecord::Base
   validates_uniqueness_of :penname
   validates_uniqueness_of :email
 
-  validates :username, :format => { :with => @@username_regex, :message => "who has numbers in their pen name?" }
+  validates :penname, :format => { :with => @@username_regex, :message => "should not have numbers in them" }
   validates :password, :length => { :minimum => 8, :too_short => "must be at least %{count} characters long" }
 
   def self.authenticate(penname, password)

@@ -33,7 +33,7 @@ class ChainController < ApplicationController
         redirect_to :controller => 'author', :action => 'login'
     end 
   end
-  
+
   def create_chain
     @chain = Chain.new
     @chain.title = params[:title]
@@ -42,7 +42,37 @@ class ChainController < ApplicationController
     @chain.num_links = 0
 
     link_rate = ''
-    if !params[:day0].nil?
+    if params[:day0].to_i == 1
+      link_rate = link_rate + '1'
+    else
+      link_rate = link_rate + '0'
+    end
+    if params[:day1].to_i == 1
+      link_rate = link_rate + '1'
+    else
+      link_rate = link_rate + '0'
+    end
+    if params[:day2].to_i == 1
+      link_rate = link_rate + '1'
+    else
+      link_rate = link_rate + '0'
+    end
+    if params[:day3].to_i == 1
+      link_rate = link_rate + '1'
+    else
+      link_rate = link_rate + '0'
+    end
+    if params[:day4].to_i == 1
+      link_rate = link_rate + '1'
+    else
+      link_rate = link_rate + '0'
+    end
+    if params[:day5].to_i == 1
+      link_rate = link_rate + '1'
+    else
+      link_rate = link_rate + '0'
+    end
+    if params[:day6].to_i == 1
       link_rate = link_rate + '1'
     else
       link_rate = link_rate + '0'
@@ -56,5 +86,4 @@ class ChainController < ApplicationController
       redirect_to :back
     end
   end
-
 end

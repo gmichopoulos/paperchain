@@ -1,6 +1,7 @@
 class AuthorController < ApplicationController
 
   #skip_before_filter :require_authentication, :only => [:login, :create]
+  before_filter :require_post, :only => [:post_login, :post_register]
 
   def authors
       @authors = Author.find(:all)
@@ -28,17 +29,20 @@ class AuthorController < ApplicationController
   end
 
   def register
-    
+   # @author = Author.find(session[:curr_author])
   end
 
   def post_register
-    @author = Author.new params[:penname]
+    @author = Author.new(:penname => params[:penname], :email =>params[:email], 
+                          :first_name => params[:first_name], :last_name => params[:last_name], 
+                          :password => params[:password], :password_confirmation => params[:password_confirmation])
     if @author.save
-      redirect_to :controller => 'chain', :action => 'author', :id => author.id
-      flash[:notice] = "Welcome to Paperchain, " + author.first_name + "!"
+      session[:curr_author] = @author.id 
+      redirect_to :controller => 'chain', :action => 'author', :id => @author.id
+      flash[:notice] = "Welcome to Paperchain, " + @author.first_name + "!"
     else
       redirect_to :controller => 'author', :action => 'register'
-      flash[:notice] = @author.errors
+      flash[:notice] = @author.errors.full_messages.to_sentence
     end
   end
 
