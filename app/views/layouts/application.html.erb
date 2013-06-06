@@ -17,14 +17,16 @@
   <%= yield :head %>
 
 </head>
-<body>
+<%= yield :body || "<body>" %>
 
-  <section id="main">
-    <div id="bottomTear"></div>
+<%= yield :header %>
 
-    <%= yield %>
+<section id="main">
+  <div id="bottomTear"></div>
 
-  </section>
+  <%= yield %>
+
+</section>
 
   <footer>
     <a href="#">About</a><a href="#">Legal</a><a href="#">Privacy</a>

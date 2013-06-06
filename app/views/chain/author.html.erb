@@ -2,6 +2,8 @@
   <script type="text/javascript">
     $(document).ready( function() {
 
+      $(document).tooltip();
+
       $('#newchain-dialog').dialog({
         modal: true,
         autoOpen: false,
@@ -43,9 +45,12 @@
   </script>
 <% end %>
 
-<% content_for :banner do %>
-  <h2>Next entry for <strong>Daily Project</strong> due at <strong>12:00 PM tomorrow</strong></h2>
-  <div class="write"><a href="#">Write!</a></div>
+<% content_for :header do %>
+  <% content_for :banner do %>
+    <h2>Next entry for <strong>Daily Project</strong> due at <strong>12:00 PM tomorrow</strong></h2>
+    <div class="write"><a href="#">Write!</a></div>
+  <% end %>
+  <%= render :partial => "shared/header" %>
 <% end %>
 
 
@@ -61,12 +66,12 @@
         <div class="left"></div><div class="center"><a href="#" class="newchain">start a new chain!</a></div><div class="right"></div>
       </div>
     </div>
-    <% @chains.each do |chain| %>
+    <% @author.chains.each do |chain| %>
       <div class="chain">
-        <div class="title">NAME o' CHAIN</div>
+        <div class="title"><%= chain.title %></div>
         <div class="links">
 
-          <img src="/images/chain-start.png" /><% (chain.num_links - 1).times do %><img src="/images/chain-mid.png" /><% end %><img src="/images/chain-new.png" />
+          <a href="/link/index/<%= chain.links.order("date")[0].id %>" title="<%= chain.links.order("date")[0].title %>"><img src="/images/chain-start.png" /></a><% (chain.num_links - 1).times do |i| %><a href="/link/index/<%= chain.links.order("date")[i+1].id %>" title="<%= chain.links.order("date")[i+1].title %>"><img src="/images/chain-mid.png" /></a><% end %><img src="/images/chain-new.png" />
 
         </div>
         <div class="writeTip">

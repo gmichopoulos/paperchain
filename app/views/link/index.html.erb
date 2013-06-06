@@ -1,0 +1,35 @@
+<% content_for :header do %>
+  <% content_for :banner do %>
+    <div class="container_12">
+        <div class="grid_3 prev"><img src="/images/entry-prev.png" /> prev entry</div>
+        <div class="grid_6"><h1><%= @link.chain.title %> <img src="/images/entry-start.png" /><img src="/images/entry-mid.png" /><img src="/images/entry-mid-sel.png" /><img src="/images/entry-end.png" /></h1></div>
+        <div class="grid_3 next">next entry <img src="/images/entry-next.png" /></div>
+      </div>
+    </div>
+  <% end %>
+  <%= render :partial => "shared/header" %>
+<% end %>
+
+<% content_for :body do %>
+  <body id="entryPage">
+<% end %>
+
+<div class="container_12">
+      <div class="goBack grid_2">&nbsp;</div>
+      <div class="entry grid_8">
+        <div class="title"><%= @link.title %></div>
+        <div class="author"><%= @link.author.penname %></div>
+        <div class="line"></div>
+        <p><%= @link.link_text %></p>
+      </div>
+      <div class="grid_2">
+        <aside class="sidebar">
+          <a href="#">edit</a>
+          <p><%= @link.date.to_date().to_formatted_s(:long) %></p>
+          <p><%= @wordcount %> words</p>
+        </aside>
+        <div class="goForward">&nbsp;</div>
+      </div>
+
+    </div>
+
