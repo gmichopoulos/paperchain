@@ -3,6 +3,12 @@ class Chain < ActiveRecord::Base
 	has_and_belongs_to_many :authors
   has_many :links
 
+  validates_presence_of :start_date
+  validates_presence_of :title
+  validates_presence_of :link_rate
+  validates_presence_of :end_type
+  validates_presence_of :num_left
+
   def get_days 
     lr = self.link_rate
     days = []
