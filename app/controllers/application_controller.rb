@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
       @author = Author.find_by_id(session[:curr_author])
       @logged_in = true
     else
-      @name = "Balls Dickturd"
+      @author = Author.new(:penname => "error");
       @logged_in = false
     end
   end

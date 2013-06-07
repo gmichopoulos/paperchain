@@ -16,9 +16,26 @@ class LinkController < ApplicationController
   def save
     @link = Link.find(params[:id])
     @link.link_text = params[:text]
+    @link.title = params[:title]
     
     if @link.save
       render :json => {:text => @link.link_text}
+    end
+  end
+
+  def create
+    @link = Link.new
+    @link.title = 'New entry'
+    @link.link_text = ''
+    @link.date = DateTime.now
+    @link.author = Author.find(session[:curr_author])
+    @link.chain = Chain.find(params[:chain])
+
+    if @link.save
+      redirect_to :controller => 'link', :action => 'index', :id => @link.id, :edit => 'true'
+    else
+      redirect_to :back
+      flash[:notice] = "Could not create new link :("
     end
   end
 
