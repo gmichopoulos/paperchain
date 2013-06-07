@@ -12,15 +12,15 @@ class LoadData < ActiveRecord::Migration
     sa.save(:validate => false)
 
     # Create initial chains
-    chain1 = Chain.new(:start_date => "2013-05-30 10:44:23", :link_rate => "0101010", :num_links => "2", :title => "Once upon a house")
+    chain1 = Chain.new(:start_date => "2013-05-30 10:44:23", :link_rate => "0101010", :title => "Once upon a house", :end_type => "entries", :num_left =>"4")
     chain1.authors << ac
     chain1.save
 
-    chain2 = Chain.new(:start_date => "2013-05-30 10:44:23", :link_rate => "0101010", :num_links => "2", :title => "History of France")
+    chain2 = Chain.new(:start_date => "2013-05-30 10:44:23", :link_rate => "0101010", :title => "History of France", :end_type => "entries", :num_left =>"3")
     chain2.authors << mo
     chain2.save   
 
-    chain3 = Chain.new(:start_date => "2013-05-31 10:44:23", :link_rate => "1001010", :num_links => "1", :title => "Haikus")
+    chain3 = Chain.new(:start_date => "2013-05-31 10:44:23", :link_rate => "1001010", :title => "Haikus", :end_type => "weeks", :num_left =>"5")
     chain3.authors << mo
     chain3.save
 
