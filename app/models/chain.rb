@@ -16,4 +16,17 @@ class Chain < ActiveRecord::Base
     return days
   end
 
+  def successful_links(author_id)
+    a = Author.find(author_id)
+    if !self.authors.include?(a) return 0
+
+    def next
+
+    a_links = Link.where("author_id = ? AND chain_id = ?", a.id, self.id)
+    curr_date = c.start_date
+    while curr_date.to_date <= Date.today
+
+    end
+  end
+
 end
