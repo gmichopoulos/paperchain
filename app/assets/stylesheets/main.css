@@ -148,6 +148,20 @@ a:hover {
   margin-bottom: 20px;
 }
 
+/* BADGES */
+
+.badges {
+  padding: 14px 0 0 0;
+}
+
+.badge {
+  padding: 0 10px;
+}
+
+.badge img {
+  width: 30px;
+}
+
 /* CHAINS */
 
 .chains {
@@ -487,6 +501,21 @@ footer a {
 #chainPage #banner .next {
   padding: 38px 0 0 0;
   text-align: right;
+}
+
+#chainPage .chains .chain {
+  display: inline-block;
+  padding: 0 4px;
+  height: 500px;
+  width: 40px;
+}
+
+#chainPage .chains .chain img {
+  margin-top: -2px;
+}
+
+#chainPage .chains .chain .fail {
+  opacity: 0.5;
 }
 
 #chainPage #links .linkBox {
