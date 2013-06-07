@@ -2,8 +2,6 @@
   <script type="text/javascript">
     $(document).ready( function() {
 
-      $(document).tooltip();
-
       $('#newchain-dialog').dialog({
         modal: true,
         autoOpen: false,
@@ -78,15 +76,15 @@
         <div class="title"><a href="/chain/index/<%= chain.id %>"><%= chain.title %></a></div>
         <div class="links">
 
-          <% if chain.num_links == 0 %>
+          <% if chain.links.count == 0 %>
           <img class="link" src="/images/chain-newchain.png" />
           <% else %>
-          <a href="/link/index/<%= chain.links.order("date")[0].id %>" title="<%= chain.links.order("date")[0].title %>"><img src="/images/chain-start.png" /></a><% (chain.num_links - 1).times do |i| %><a href="/link/index/<%= chain.links.order("date")[i+1].id %>" title="<%= chain.links.order("date")[i+1].title %>"><img src="/images/chain-mid.png" /></a><% end %><img src="/images/chain-new.png" />
+          <a href="/link/index/<%= chain.links.order("date")[0].id %>" title="<%= chain.links.order("date")[0].title %>"><img src="/images/chain-start.png" /></a><% (chain.links.count - 1).times do |i| %><a href="/link/index/<%= chain.links.order("date")[i+1].id %>" title="<%= chain.links.order("date")[i+1].title %>"><img src="/images/chain-mid.png" /></a><% end %><img src="/images/chain-new.png" />
           <% end %>
 
         </div>
         <div class="writeTip">
-          <div class="left"></div><div class="center"><a href="#">Write!</a></div><div class="right"></div>
+          <div class="left"></div><div class="center"><%= link_to 'Write!', :controller => 'link', :action => 'create', :chain => chain.id %></div><div class="right"></div>
         </div>
       </div>
     <% end %>
