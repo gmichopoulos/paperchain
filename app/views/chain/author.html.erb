@@ -45,22 +45,28 @@
 
 <% content_for :header do %>
   <% content_for :banner do %>
-    <h2>Next entry for <strong><%= @next_chain.title %></strong> due at <strong>11:59 PM 
-      <% if @days_nc == 0 %>
-        today
-      <% elsif @days_nc == 1 %>
-        tomorrow
-      <% else %>
-        on <% Date.today + @days_nc %>
-      <% end %></strong></h2>
-    <div class="write"><a href="#">Write!</a></div>
+    <% if !@next_chain.nil? %>
+      <h2>Next entry for <strong><%= @next_chain.title %></strong> due at <strong>11:59 PM 
+        <% if @days_nc == 0 %>
+          today
+        <% elsif @days_nc == 1 %>
+          tomorrow
+        <% else %>
+          on <% Date.today + @days_nc %>
+        <% end %></strong></h2>
+      <div class="write"><a href="#"><%= link_to 'Write!', :controller => 'link', :action => 'create', :chain => @next_chain.id %></a></div>
+    <% else %>
+    <h2>All of your chains are up to date!</h2>
+    <div class="tip-noWrite">Great Work!</div>
+    <% end %>
   <% end %>
   <%= render :partial => "shared/header" %>
 <% end %>
+  
 
 
 <% if flash[:notice] %> 
-    <h2> <%= flash[:notice] %> </h2> 
+    <div class="container_12"><div class="grid_4">&nbsp;</div><div class="grid_4 flash"> <%= flash[:notice] %> </div></div>
 <% end %> 
 
 <div class="container_12">
