@@ -1,6 +1,5 @@
 class ChainController < ApplicationController
 
-  # before_filter :check_login 
   before_filter :require_post, :only => [:post_chain]
 
   def index
