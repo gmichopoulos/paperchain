@@ -22,12 +22,22 @@
       $('a.register').click( function() {
         $('#register-dialog').dialog('open');
       });
+
+      $(function() {
+        $( "input[type=submit]" )
+          .button()
+          .click(function( event ) {
+            $('#login_form').submit();
+          });
+      });
+
+
     });
   </script>
 <% end %>
 
 <div id="splash_header" class="container_12">
-  <div id="logo" class="grid_8 prefix_1 suffix_3">
+  <div id="logo" class="grid_10 prefix_1 suffix_1">
     <img id="splash_logo" src="/images/paperchain_big.png" />
   </div>
 </div>
@@ -35,23 +45,25 @@
     <!-- <div id="video" class="grid_5 alpha">
       <iframe id="demo_video" src="http://www.youtube.com/embed/A9bUlkcMtlA" frameborder="0" allowfullscreen=""></iframe>
     </div> -->
-  <div id="banner" class="grid_6 alpha">
-    <div id="description">Paperchain is a web-app that encourages writers to write consistently through the use of metrics, and the social pressure that only friends can provide.</div>
+  <div id="blurb" class="grid_5 prefix_1">
+    <div id="banner">
+      <div id="description">Paperchain encourages writers to write consistently using the social pressure that only friends can provide.</div>
+    </div>
   </div>
-  <div id="login" class="grid_5 prefix_1 omega">
+  <div id="login" class="grid_4 suffix_2">
     <div id="login_box">
         <div id="login_flash">
           <% if flash[:log_err] %> 
-           <h3 id="log_err"> <%= flash[:log_err] %> </h3> 
+           <h3 id="log_err"> <%= flash[:log_err] %> </h3> <br />
           <% end %> 
         </div>
-    <%= form_tag("/author/post_login", :method => "post") do %>
+    <%= form_tag("/author/post_login", :method => "post", :id => "login_form") do %>
       <%= label_tag(:login, "Penname") %> 
       <%= text_field_tag(:penname) %> <br />
       <%= label_tag(:login, "Password") %> 
       <%= password_field_tag(:password) %> <br />
-      <%= submit_tag "Log In" %> <br /><br />
-      <a href="#" class="register">New to Paperchain? Register Now!</a>
+      <%= submit_tag "Log In", :id => "login"%> <br /><br />
+      <a href="#" class="register">New to Paperchain?<br />Register Now!</a>
     <% end %>
     </div>
   </div>

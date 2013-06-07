@@ -600,16 +600,21 @@ footer a {
 
 #log_err {
   color: red;
+  font-size: 13px;
 }
 
 #reg_err {
   color: red;
 }
 
+#splash_body #banner {
+  margin-left: 0px;
+}
+
 #description {
   font-size: 22px;
-  font-weight: 700;
-  padding: 15px;
+  font-weight: 300;
+  padding: 25px;
   text-align: center;
 }
 
@@ -618,7 +623,7 @@ footer a {
   color:black !important;
   text-align: center;
   background-color: white;
-  border: 5px solid navy;
+  border: 5px solid #09d;
   padding: 15px;
 }
 
