@@ -82,6 +82,7 @@
         <% end %>
       </aside>
     </div>
-    <a href="#">Invite a member!</a>
+    <a href="#">Invite a member!</a><br />
+    <%= link_to '[leave this chain]', :controller => 'chain', :action => 'remove_self', :chain => @chain.id %>
   </div>
 </div>
