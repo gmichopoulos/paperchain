@@ -8,7 +8,21 @@ class ChainController < ApplicationController
   end
 
   def post_invite
-    
+    invite_list = params[:pennames].split(/\W+/)
+    chain = Chain.find(params[:chain_id])
+    #inviter = params[:curr_author]
+    for invitee in invite_list do
+      author = Author.where("penname = ?", invitee)
+      if author.length == 0
+        flash[:invite_err] = "The pennames you entered were not all valid."
+        redirect_to :controller => 'chain', :action => 'index', :id => params[:chain_id]
+        return
+      else
+        chain.authors << author
+      end
+    end
+    #flash[:notice] = "Invitations sent to desired pennames."
+    redirect_to :controller => 'chain', :action => 'index', :id => params[:chain_id]
   end
 
   def find_next_link(author)
@@ -34,11 +48,8 @@ class ChainController < ApplicationController
               end
             end
             author_links = Link.where("author_id = ? AND chain_id = ?", author.id, chain.id)
-            puts author_links
             link_found = false
             author_links.each do |link|
-              puts link
-              puts link.id
               if link.date.to_date > (Date.today - counter)
                 link_found = true
               end
@@ -55,6 +66,39 @@ class ChainController < ApplicationController
     return next_chain, next_due
   end 
 
+  # def accept_invitation
+  #   author = Author.find(session[:curr_author])
+  #   invitation = Invitation.find(params[:invitation])
+  #   author.chains << Chain.find(invitation.chain)
+  #   author.invitations.delete(invitation)
+  #   if author.save
+  #     redirect_to :controller => 'chain', :action => 'author', :id => session[:curr_author]
+  #   else
+  #     flash[:notice] = "Something went wrong on our end. Try updating invitations again!"
+  #     redirect_to :controller => 'chain', :action => 'author', :id => session[:curr_author]
+  #   end
+  # end
+
+  # def reject_invitation
+  #   author = Author.find(session[:curr_author])
+  #   invitation = Invitation.find(params[:invitation])
+  #   author.invitations.delete(invitation)
+  #   if author.save
+  #     redirect_to :controller => 'chain', :action => 'author', :id => session[:curr_author]
+  #   else
+  #     flash[:notice] = "Something went wrong on our end. Try updating invitations again!"
+  #     redirect_to :controller => 'chain', :action => 'author', :id => session[:curr_author]
+  #   end
+  # end
+
+  # def respond_invitation
+  #   if params[:no] == 1
+  #     reject_invitation
+  #   else
+  #     accept_invitation
+  #   end
+  # end
+
   def author
     id = params[:id]
     if !id.nil?
@@ -62,6 +106,8 @@ class ChainController < ApplicationController
         
         @author = Author.find(id)
         @chains = @author.chains
+
+        #@invitations = @author.invitations
 
         @num_links = 0
         @num_words = 0
@@ -95,9 +141,8 @@ class ChainController < ApplicationController
     chain.save
     author.save
     redirect_to :controller => 'chain', :action => 'author', :id => session[:curr_author]
-
   end
-  
+
   def create_chain
     @chain = Chain.new
     @chain.title = params[:title]
