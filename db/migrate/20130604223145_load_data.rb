@@ -12,7 +12,7 @@ class LoadData < ActiveRecord::Migration
     sa.save(:validate => false)
 
     # Create initial chains
-    chain1 = Chain.new(:start_date => "2013-05-23 10:44:23", :link_rate => "0101010", :title => "Once upon a house", :end_type => "entries", :num_left =>"4")
+    chain1 = Chain.new(:start_date => "2013-05-23 10:44:23", :link_rate => "0101010", :title => "Hemmingway's Angels", :end_type => "entries", :num_left =>"4")
     chain1.authors << ac
     chain1.authors << sa
     chain1.save
@@ -28,7 +28,7 @@ class LoadData < ActiveRecord::Migration
     chain3.save
 
     # Create initial links
-    link1 = Link.new(:date => "2013-05-24 8:44:23", :title => "Lorem 1", :link_text => "There once was a house. A small ")
+    link1 = Link.new(:date => "2013-05-24 8:44:23", :title => "Lorem 1", :link_text => "There once was a house. A small house.")
     link1.author = ac
     link1.chain = chain1
     link1.save
@@ -43,14 +43,14 @@ Sed laoreet scelerisque sapien sit amet egestas. Maecenas interdum dapibus nunc,
     link3 = Link.new(:date => "2013-05-31 8:44:23", :title => "Lorem 3", :link_text => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer malesuada fringilla urna, eget convallis metus fringilla non. Donec elementum, est eget porta interdum, arcu est consequat lectus, sed rutrum neque arcu at erat. Vivamus et urna sit amet odio tempus dictum. Sed facilisis arcu a sem volutpat vitae dapibus risus blandit. Nam semper bibendum ante, a aliquam massa fringilla vitae. Curabitur sed risus eros, in tempus massa. Pellentesque arcu enim, egestas vitae volutpat ut, semper eget nunc. Aliquam dignissim hendrerit ante, sed bibendum orci commodo ac. Nunc bibendum faucibus pellentesque. Mauris commodo cursus turpis. Praesent tincidunt, nibh ac vehicula sollicitudin, arcu neque euismod diam, quis lobortis lectus urna ut diam. Phasellus condimentum ornare sodales. Mauris tellus risus, mattis sit amet tristique at, dignissim a mauris. Proin tincidunt risus a velit pellentesque sed sodales lacus convallis.
 
 Sed laoreet scelerisque sapien sit amet egestas. Maecenas interdum dapibus nunc, a lacinia est porta ut. Cras hendrerit sagittis metus non vehicula. In hac habitasse platea dictumst. Praesent at vestibulum diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet nunc non enim molestie ut convallis nunc rhoncus. Proin ipsum sapien, pharetra ut sodales ac, fringilla sit amet elit. In nisi ligula, accumsan in euismod id, hendrerit ut metus. Quisque quis arcu et neque volutpat elementum. Vivamus fermentum mattis felis non dapibus. Quisque faucibus sapien odio.")
-    link3.author = mo
+    link3.author = ac
     link3.chain = chain2
     link3.save
 
     link4 = Link.new(:date => "2013-06-03 8:44:23", :title => "Lorem 4", :link_text => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer malesuada fringilla urna, eget convallis metus fringilla non. Donec elementum, est eget porta interdum, arcu est consequat lectus, sed rutrum neque arcu at erat. Vivamus et urna sit amet odio tempus dictum. Sed facilisis arcu a sem volutpat vitae dapibus risus blandit. Nam semper bibendum ante, a aliquam massa fringilla vitae. Curabitur sed risus eros, in tempus massa. Pellentesque arcu enim, egestas vitae volutpat ut, semper eget nunc. Aliquam dignissim hendrerit ante, sed bibendum orci commodo ac. Nunc bibendum faucibus pellentesque. Mauris commodo cursus turpis. Praesent tincidunt, nibh ac vehicula sollicitudin, arcu neque euismod diam, quis lobortis lectus urna ut diam. Phasellus condimentum ornare sodales. Mauris tellus risus, mattis sit amet tristique at, dignissim a mauris. Proin tincidunt risus a velit pellentesque sed sodales lacus convallis.
 
 Sed laoreet scelerisque sapien sit amet egestas. Maecenas interdum dapibus nunc, a lacinia est porta ut. Cras hendrerit sagittis metus non vehicula. In hac habitasse platea dictumst. Praesent at vestibulum diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet nunc non enim molestie ut convallis nunc rhoncus. Proin ipsum sapien, pharetra ut sodales ac, fringilla sit amet elit. In nisi ligula, accumsan in euismod id, hendrerit ut metus. Quisque quis arcu et neque volutpat elementum. Vivamus fermentum mattis felis non dapibus. Quisque faucibus sapien odio.")
-    link4.author = mo
+    link4.author = ac
     link4.chain = chain2
     link4.save
 
