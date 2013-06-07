@@ -87,6 +87,17 @@ class ChainController < ApplicationController
     end 
   end
 
+  def remove_self
+    chain = Chain.find(params[:chain])
+    author = Author.find(session[:curr_author])
+
+    chain.authors.delete(author)
+    chain.save
+    author.save
+    redirect_to :controller => 'chain', :action => 'author', :id => session[:curr_author]
+
+  end
+  
   def create_chain
     @chain = Chain.new
     @chain.title = params[:title]
