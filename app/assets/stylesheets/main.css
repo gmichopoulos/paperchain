@@ -370,6 +370,7 @@ footer a {
   margin-bottom: 15px;
   font-size: 14px;
   line-height: 20px;
+  position: relative;
 }
 
 #entryPage .entry #text b {
@@ -432,7 +433,18 @@ footer a {
 
 #entryPage #banner h1 {
   font-size: 26px;
+  text-align: center;
   padding: 30px 0 20px 0;
+}
+
+#entryPage #banner h1 a {
+  color: #fff;
+  text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.34);
+}
+
+#entryPage #banner h1 a:hover {
+  color: #333;
+  text-shadow: 0px -1px 0px rgba(255, 255, 255, 0.48);
 }
 
 #entryPage #banner .prev {
@@ -449,15 +461,52 @@ footer a {
   color: #fff;
 }
 
+/* CHAIN PAGE */
+
+#chainPage h1 {
+  font-size: 26px;
+  text-align: center;
+  padding: 30px 0 20px 0;
+}
+
+#chainPage #banner .next {
+  padding: 38px 0 0 0;
+  text-align: right;
+}
+
+#chainPage #links .linkBox {
+  height: 100px;
+  background: #fff;
+  color: #888;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+
+
 /* WYSIHTML5 */
 
 .wysihtml5-sandbox {
   background: transparent !important;
-  border: 0px !important;
+  border: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
   width: 620px !important;
-  height: 280px !important;
+  /*position: relative !important;*/
+}
+
+.editorTitle {
+  background: transparent;
+  font-size: 22px;
+  font-weight: 700;
+  color: #333;
+  border: none;
+  box-shadow: none;
+  padding: 5px;
+}
+
+:focus {
+  outline: none;
 }
 
 /* BOILERPLATE */

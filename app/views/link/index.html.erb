@@ -2,39 +2,160 @@
   
   <%= javascript_include_tag 'advanced' %>
   <%= javascript_include_tag 'wysihtml5-0.4.0pre.min' %>
+  <%= javascript_include_tag 'rangy/log4javascript' %>
+  <%= javascript_include_tag 'rangy/core' %>
+  <%= javascript_include_tag 'rangy/dom' %>
+  <%= javascript_include_tag 'rangy/domrange' %>
+  <%= javascript_include_tag 'rangy/wrappedrange' %>
+  <%= javascript_include_tag 'rangy/wrappedselection' %>
+  <%= javascript_include_tag 'rangy/rangy-position' %>
   <%= javascript_include_tag 'wysihtml5-paperchain' %>
+
+  <style type="text/css">
+    .tooltip {
+      position: absolute;
+      padding: 5px 5px 5px 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.23);
+    }
+
+    .tooltip-triangle {
+      position: absolute;
+      width: 0px;
+      height: 0px;
+      border-style: solid;
+      border-width: 8px 4px 0 4px;
+      border-color: rgba(0,0,0,0.8) transparent transparent transparent;
+    }
+
+    .tooltip-bold, .tooltip-italic, .tooltip-underline, .tooltip-smaller, .tooltip-bigger {
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      width: 15px;
+      height: 15px;
+      margin: 0 7px;
+      display: inline-block;
+    }
+
+    .tooltip-sep {
+      width: 1px;
+      height: 5px;
+      display: inline-block;
+      border-bottom: 15px solid #ccc;
+    }
+
+    .tooltip-bold {
+      background-image: url(/images/f-bold.png); 
+    }
+
+    .tooltip-italic {
+      background-image: url(/images/f-italic.png);
+    }
+
+    .tooltip-underline {
+      background-image: url(/images/f-underline.png);
+    }
+
+    .tooltip-smaller {
+      background-image: url(/images/f-smaller.png);
+      width: 16px;
+    }
+
+    .tooltip-bigger {
+      background-image: url(/images/f-bigger.png);
+      width: 21px;
+    }
+
+  </style>
+
   <script type="text/javascript">
     $(document).ready( function() {
-
-      $(document).tooltip();
 
       var save = $("#save");
 
       save.click( function() {
         var text = $('#text').wysihtml5Text();
+        var title = $('.title').children('input').val();
+        console.log('title ' + title);
         $.ajax({
           type: 'POST',
+          beforeSend: function(xhr) {
+            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+          },
           url: '/link/save',
           data: {
             id: '<%= @link.id %>',
-            text: text
+            text: text,
+            title: title,
           },
           dataType: "JSON"
         }).success(function() {
           $('#save').hide();
           $('#edit').show();
+          $('header').show('slow');
+          $('footer').show('fast');
+
+          $('.title').html(title);
+
           $('#text').html(text);
+          $(window).unbind('resize');
         });
+      });
+
+      $( '#edit' ).click( function() {
+        $(this).hide();
+        $('header').hide('slow');
+        $('footer').hide('fast');
+        save.show();
+
+        //change title
+        var title = $('.title').text();
+        $('.title').html('');
+        var input = $('<input>');
+        input.val(title);
+        input.attr('class', 'editorTitle');
+        $('.title').append(input);
+
+        //adjust editor height
+        var adjustEditorHeight = function() {
+          var offset = $('#text').offset();
+          var winheight = $(window).height();
+          var edheight = winheight - offset.top - 25;
+          console.log(edheight);
+          $('.wysihtml5-sandbox').css('cssText', 'height: ' + edheight + "px !important");
+        };
+
+        setTimeout( function() {
+          $( '#text' ).wysihtml5();
+          adjustEditorHeight();
+        }, 600);
+
+        $(window).resize(adjustEditorHeight);
+
       });
 
       save.hide();
 
-      $( '#edit' ).click( function() {
-        $( '#text' ).wysihtml5();
-        $(this).hide();
-        save.show();
+      $(window).keyup( function(evt) {
+        var LEFT_ARROW = 37;
+        var RIGHT_ARROW = 39;
+        var key = evt.which;
+        
+        if (key == LEFT_ARROW) {
+          <% if @prev %>window.location = "/link/index/<%= @prev.id %>"<% end %>
+        } else if (key == RIGHT_ARROW) {
+          <% if @next %>window.location = "/link/index/<%= @next.id %>"<% end %>
+        }
+
       });
 
+      // console.log('parameter for edit: ' + getParameterByName('edit'));
+      if(getParameterByName('edit') == 'true') {
+        $('#edit').trigger('click');
+      }
 
     });
   </script>
@@ -44,7 +165,7 @@
   <% content_for :banner do %>
     <div class="container_12">
         <div class="grid_3 prev"><% if @prev %><a href="/link/index/<%= @prev.id %>" title="<%= @prev.title %>"><img src="/images/entry-prev.png" /> prev entry</a><% end %></div>
-        <div class="grid_6"><h1><%= @link.chain.title %> <img src="/images/entry-start.png" /><img src="/images/entry-mid.png" /><img src="/images/entry-mid-sel.png" /><img src="/images/entry-end.png" /></h1></div>
+        <div class="grid_6"><h1><a href="/chain/index/<%= @link.chain.id %>"><%= @link.chain.title %></a></h1></div>
         <div class="grid_3 next"><% if @next %><a href="/link/index/<%= @next.id %>" title="<%= @next.title %>">next entry</a> <img src="/images/entry-next.png" /><% end %></div>
       </div>
     </div>
@@ -72,7 +193,7 @@
       <a id="save" href="#">save</a>
       <a id="edit" href="#">edit</a>
       <p><%= @link.date.to_date().to_formatted_s(:long) %></p>
-      <p><%= @wordcount %> words</p>
+      <p class="wordcount"><%= @wordcount %> words</p>
     </aside>
     <% if @next %><a href="/link/index/<%= @next.id %>" title="<%= @next.title %>"><% end %>
       <div class="goForward">&nbsp;</div>
