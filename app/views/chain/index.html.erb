@@ -9,13 +9,18 @@
         window.location = '/link/index/' + lid;
       });
 
+      $('.newLinkBox').click( function() {
+        var lid = $(this).attr('id'); 
+        window.location = '/link/create?chain=' + <%= @chain.id %>;
+      });
+
     });
   </script>
 
   <% content_for :banner do %>
     <div class="container_12">
         <div class="grid_8 prefix_2"><h1><%= @chain.title %></h1></div>
-        <div class="grid_2 badges"><a class="badge" title="Group chain!"><img src='/images/badge-pencil.png'></a><a class="badge" title="Wrote first entry!"><img src='/images/badge-star.png'></a></div>
+        <div class="grid_2 badges"><% if @chain.authors.length > 1 %><a class="badge" title="Group chain!"><img src='/images/badge-pencil.png'></a><% end %><% if @chain.links.length > 0 %><a class="badge" title="Wrote first entry!"><img src='/images/badge-star.png'></a><% end %></div>
       </div>
     </div>
   <% end %>
@@ -45,7 +50,9 @@
     <% end %>
   </div>
   <div class="grid_8" id="links">
-    <% if @chain.links.length == 0 %>&nbsp;<% end %>
+    
+    <div class="newLinkBox"><p>Write a new entry!</p></div>
+
     <% @chain.links.order("date DESC").each do |l| %>
       <div class="linkBox" id="<%= l.id %>">
         <div class="title"><%= l.title %></div>
@@ -71,7 +78,7 @@
       <span class="title">MEMBERS</span>
       <aside class="membersBox">
         <% @chain.authors.each do |a| %>
-          <p><%= a.penname %></p>
+          <p title="<%= a.points %> points"><%= a.penname %></p>
         <% end %>
       </aside>
     </div>
