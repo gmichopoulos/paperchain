@@ -8,7 +8,19 @@ class ChainController < ApplicationController
   end
 
   def post_invite
-    
+    invite_list = params[:pennames].split(/\W+/)
+    chain = Chain.find(params[:chain_id])
+    for invite in invite_list do
+      author = Author.where("penname = ?", invite)
+      if author.length == 0
+        flash[:invite_err] = "The pennames you entered were not all valid."
+        redirect_to :controller => 'chain', :action => 'index', :id => params[:chain_id]
+        return
+      else
+          chain.authors << author
+      end
+    end
+    redirect_to :controller => 'chain', :action => 'index', :id => params[:chain_id]
   end
 
   def find_next_link(author)
@@ -34,11 +46,8 @@ class ChainController < ApplicationController
               end
             end
             author_links = Link.where("author_id = ? AND chain_id = ?", author.id, chain.id)
-            puts author_links
             link_found = false
             author_links.each do |link|
-              puts link
-              puts link.id
               if link.date.to_date > (Date.today - counter)
                 link_found = true
               end

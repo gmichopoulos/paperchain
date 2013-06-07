@@ -3,7 +3,25 @@
 
   <script>
     $(document).ready( function() {
+      $('#invite-dialog').dialog({
+        modal: true,
+        autoOpen: false,
+        draggable: false,
+        resizable: false,
+        buttons: {
+          "Send Invitations!": function() {
+            $('#invite_form').submit();
+          }
+        }
+      });
 
+      $('a.invite').click( function() {
+        $('#invite-dialog').dialog('open');
+      });
+      
+      if( $('#invite_err').length ) {
+        $('#invite-dialog').dialog('open');
+      }
       $('.linkBox').click( function() {
         var lid = $(this).attr('id'); 
         window.location = '/link/index/' + lid;
@@ -82,6 +100,21 @@
         <% end %>
       </aside>
     </div>
-    <a href="#">Invite a member!</a>
+    <a href="#" class="invite">Invite a member!</a>
   </div>
+</div>
+
+<div id="invite-dialog" class="dialog" title="The more the merrier">
+  <div id="invite_flash">
+    <% if flash[:invite_err] %> 
+     <h3 id="invite_err"> <%= flash[:invite_err] %> </h3> 
+    <% end %> 
+  </div>
+    <%= form_tag("/chain/post_invite", :method => "post", :id => "invite_form") do %>
+      <div class="section">
+        <div class="section-left"><%= label_tag(:invite, "Enter the [comma-separated] pennames of the authors you want to invite to this chain:") %></div>
+        <div class="section-right"><%= text_field_tag(:pennames) %> <%= hidden_field_tag("chain_id", @chain.id) %> </div>      
+      </div>
+      <div class="clear"></div>
+    <% end %>
 </div>
