@@ -513,11 +513,12 @@ footer a {
   display: inline-block;
   padding: 0 4px;
   height: 500px;
-  width: 40px;
+  width: 30px;
 }
 
 #chainPage .chains .chain img {
   margin-top: -2px;
+  width: 30px;
 }
 
 #chainPage .chains .chain .fail {
@@ -593,6 +594,8 @@ footer a {
 
 #chainPage .stats .updates li {
   margin: 0 0 5px 5px;
+  text-align: right;
+  color: #999;
 }
 
 .members {
