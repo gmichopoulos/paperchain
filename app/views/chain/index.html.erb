@@ -28,9 +28,24 @@
 <% end %>
 
 <div class="container_12">
-  <div class="grid_2">CHAIN</div>
+  <div class="grid_2 chains">
+    <% @chain.authors.each do |a| %>
+      <div class="chain">
+      <a title="<%= a.penname %>">
+      <% @chain.successful_links(a).each_with_index do |s, i| %>
+        <% if s[:link_id] %>
+          <div>O <% if @successes[i] == @chain.authors.length %> ! <% end %></div>
+        <% else %>
+          <div>x <% if @successes[i] == @chain.authors.length %> ! <% end %></div>
+        <% end %>
+      <% end %>
+      </a>
+      </div>
+    <% end %>
+  </div>
   <div class="grid_8" id="links">
-    <% @chain.links.each do |l| %>
+    <% if @chain.links.length == 0 %>&nbsp;<% end %>
+    <% @chain.links.order("date DESC").each do |l| %>
       <div class="linkBox" id="<%= l.id %>">
         <div class="title"><%= l.title %></div>
         <div class="author"><%= l.author.penname %></div>
@@ -46,7 +61,7 @@
       <% else %>
         </p><ul>
         <% @chain.get_days.each do |d| %>
-          <li><%= d %></li>
+          <li><%= Date::DAYNAMES[d] %></li>
         <% end %>
         </ul>
       <% end %>

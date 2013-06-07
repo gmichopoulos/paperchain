@@ -4,6 +4,7 @@ class ChainController < ApplicationController
 
   def index
     @chain = Chain.find(params[:id])
+    @successes = @chain.successes
   end
 
   def find_next_link(author)
