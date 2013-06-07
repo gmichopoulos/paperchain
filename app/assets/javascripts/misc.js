@@ -2,7 +2,10 @@ $(document).ready( function() {
   $(document).tooltip({
     show: 200,
     hide: false,
-    position: { my: "left+15 top" }
+    position: { my: "left+15 top" },
+    content: function() {
+      return $(this).prop('title');
+    }
   });
 });
 
