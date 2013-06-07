@@ -15,7 +15,7 @@
   <% content_for :banner do %>
     <div class="container_12">
         <div class="grid_8 prefix_2"><h1><%= @chain.title %></h1></div>
-        <div class="grid_2 next">stats/badges</div>
+        <div class="grid_2 badges"><a class="badge" title="Group chain!"><img src='/images/badge-pencil.png'></a><a class="badge" title="Wrote first entry!"><img src='/images/badge-star.png'></a></div>
       </div>
     </div>
   <% end %>
@@ -31,13 +31,14 @@
   <div class="grid_2 chains">
     <% @chain.authors.each do |a| %>
       <div class="chain">
-      <a title="<%= a.penname %>">
       <% @chain.successful_links(a).each_with_index do |s, i| %>
+        <a title="<p><%= s[:date].to_date.to_formatted_s(:short) %></p><p><%= a.penname %></p>" >
         <% if s[:link_id] %>
-          <div>O <% if @successes[i] == @chain.authors.length %> ! <% end %></div>
+          <% if @successes[i] == @chain.authors.length %><img src='/images/vert-chain-mid-sel.png' /><% else %><img src='/images/vert-chain-mid.png' /><% end %>
         <% else %>
-          <div>x <% if @successes[i] == @chain.authors.length %> ! <% end %></div>
+          <img class="fail" src='/images/vert-chain-mid.png' />
         <% end %>
+        </a>
       <% end %>
       </a>
       </div>
