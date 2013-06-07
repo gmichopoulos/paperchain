@@ -54,7 +54,7 @@ class Chain < ActiveRecord::Base
       curr_date = next_day(curr_date.to_date+1, self.get_days)
     end
 
-    return s_links
+    return s_links.reverse
 
   end
 
@@ -70,6 +70,14 @@ class Chain < ActiveRecord::Base
 
     return successes
 
+  end
+
+  def wordcount
+    wc = 0
+    self.links.each do |l|
+      wc += l.wordcount
+    end
+    return wc
   end
 
 end
