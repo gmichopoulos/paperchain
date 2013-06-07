@@ -107,7 +107,7 @@
   </div>
 </div>
 
-  <div id="newchain-dialog" title="Make a new chain!">
+  <div id="newchain-dialog" class="dialog" title="Make a new chain!">
     <%= form_tag("/chain/create_chain", :id => "newchain_form", :method => "post") do %>
       <%= text_field_tag(:title, nil, :placeholder => "Title") %>
       <div class="section">

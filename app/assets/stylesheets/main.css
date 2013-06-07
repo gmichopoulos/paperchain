@@ -270,28 +270,28 @@ a:hover {
 
 /* FORMS */
 
-#newchain-dialog input.title {
+.dialog input.title {
   font-size: 18px;
   padding: 5px;
   margin: 10px 0;
 }
 
-#newchain-dialog input.num {
+.dialog input.num {
   width: 20px;
 }
 
-#newchain-dialog .section {
+.dialog .section {
   padding: 5px 0;
 }
 
-#newchain-dialog .section-left {
+.dialog .section-left {
   float: left;
   width: 50px;
   font-weight: bold;
   margin-top: 10px;
 }
 
-#newchain-dialog .section-right {
+.dialog .section-right {
   float: left;
   margin-top: 10px;
 }
@@ -517,10 +517,19 @@ footer a {
 
 /* SPLASH */
 
-#demo_video {
-  width: 420px !important;
-  height: 315px !important;
-  padding: 20px;
+#log_err {
+  color: red;
+}
+
+#reg_err {
+  color: red;
+}
+
+#description {
+  font-size: 22px;
+  font-weight: 700;
+  padding: 15px;
+  text-align: center;
 }
 
 
@@ -529,9 +538,6 @@ footer a {
   text-align: center;
   background-color: white;
   border: 5px solid navy;
-  margin: 100px 40px 100px 0px;
+  padding: 15px;
 }
 
-#login_box .a {
-  color: white;
-}

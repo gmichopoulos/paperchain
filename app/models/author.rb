@@ -1,5 +1,6 @@
 class Author < ActiveRecord::Base
-  @@username_regex = /\p{Alpha}*/
+  @@username_regex = /^[a-zA-Z]+$/
+  @@email_regex = /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i
 
   attr_accessible  :first_name, :last_name, :email, :penname, :password, :password_confirmation
 
@@ -16,7 +17,8 @@ class Author < ActiveRecord::Base
   validates_uniqueness_of :penname
   validates_uniqueness_of :email
 
-  validates :penname, :format => { :with => @@username_regex, :message => "should not have numbers in them" }
+  validates :email, :format => { :with => @@email_regex, :message => "is invalid" }
+  validates :penname, :format => { :with => @@username_regex, :message => "should not have numbers" }
   validates :password, :length => { :minimum => 8, :too_short => "must be at least %{count} characters long" }
 
   def self.authenticate(penname, password)
