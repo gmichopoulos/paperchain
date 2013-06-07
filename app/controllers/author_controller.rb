@@ -7,10 +7,6 @@ class AuthorController < ApplicationController
       @authors = Author.find(:all)
   end
 
-  def login
-
-  end
-
   def post_login
     @author = Author.authenticate params[:penname], params[:password]
     if @author
@@ -18,18 +14,14 @@ class AuthorController < ApplicationController
       redirect_to :controller => 'chain', :action => 'author', :id => @author.id
       flash[:notice] = "Welcome back to Paperchain, " + @author.first_name + "!"
     else
-      redirect_to :controller => 'author', :action => 'login'
-      flash[:notice] = "That was not a valid penname-password combination. Please try again."
+      redirect_to root_url
+      flash[:log_err] = "That was not a valid penname-password combination. Please try again."
     end
   end
 
   def logout
     session[:curr_author] = nil
-    redirect_to :controller => 'author', :action => 'login'
-  end
-
-  def register
-   # @author = Author.find(session[:curr_author])
+    redirect_to root_url
   end
 
   def post_register
@@ -41,8 +33,8 @@ class AuthorController < ApplicationController
       redirect_to :controller => 'chain', :action => 'author', :id => @author.id
       flash[:notice] = "Welcome to Paperchain, " + @author.first_name + "!"
     else
-      redirect_to :controller => 'author', :action => 'register'
-      flash[:notice] = @author.errors.full_messages.to_sentence
+      redirect_to root_url
+      flash[:reg_err] = @author.errors.full_messages.to_sentence
     end
   end
 

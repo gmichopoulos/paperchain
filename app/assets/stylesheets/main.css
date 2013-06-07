@@ -465,3 +465,24 @@ footer a {
 .clear {
   clear: both;
 }
+
+/* SPLASH */
+
+#demo_video {
+  width: 420px !important;
+  height: 315px !important;
+  padding: 20px;
+}
+
+
+#login_box {
+  color:black !important;
+  text-align: center;
+  background-color: white;
+  border: 5px solid navy;
+  margin: 100px 40px 100px 0px;
+}
+
+#login_box .a {
+  color: white;
+}
