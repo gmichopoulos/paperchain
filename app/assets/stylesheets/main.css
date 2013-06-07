@@ -322,6 +322,10 @@ a:hover {
   margin-top: 10px;
 }
 
+#register_form .section-left {
+  width: 100px;
+}
+
 .dialog .section-right {
   float: left;
   margin-top: 10px;
@@ -662,6 +666,14 @@ footer a {
   color: red;
 }
 
+#splash_logo {
+  margin-bottom: 40px;
+}
+
+#splash_body {
+  margin-bottom: 40px;
+}
+
 #splash_body #banner {
   margin-left: 0px;
 }
@@ -669,8 +681,9 @@ footer a {
 #description {
   font-size: 22px;
   font-weight: 300;
-  padding: 25px;
+  padding: 26px 25px;
   text-align: center;
+  line-height: 32px;
 }
 
 
