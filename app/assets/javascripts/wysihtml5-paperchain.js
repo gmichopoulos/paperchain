@@ -1,5 +1,5 @@
 var Wysihtml5 = function(parentEl, options) {
-  var ta = $( "<textarea id='wysihtml5-textarea' placeholder='Title' autofocus></textarea>" );
+  var ta = $( "<textarea id='wysihtml5-textarea' placeholder='Enter text' autofocus></textarea>" );
   this.el = ta;
   this.parentEl = parentEl;
 

@@ -191,7 +191,9 @@
   <div class="grid_2">
     <aside class="sidebar">
       <a id="save" href="#">save</a>
+      <% if @link.author.id == session[:curr_author] %>
       <a id="edit" href="#">edit</a>
+      <% end %>
       <p><%= @link.date.to_date().to_formatted_s(:long) %></p>
       <p class="wordcount"><%= @wordcount %> words</p>
     </aside>
