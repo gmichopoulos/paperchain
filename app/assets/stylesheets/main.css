@@ -138,6 +138,16 @@ a:hover {
   height: 23px;
 }
 
+.flash {
+  text-align: center;
+  margin: 0 auto;
+  font-size: 12px;
+  padding: 5px;
+  background: rgba(0,153,221,0.3);
+  border: 2px #09d solid;
+  margin-bottom: 20px;
+}
+
 /* CHAINS */
 
 .chains {
@@ -480,14 +490,80 @@ footer a {
 }
 
 #chainPage #links .linkBox {
-  height: 100px;
+  height: 110px;
   background: #fff;
   color: #888;
   font-size: 12px;
   margin-bottom: 20px;
 }
 
+#chainPage #links .linkBox:hover {
+  background: #ccc;
+}
 
+#chainPage #links .linkBox .title {
+  color: #333;
+  font-size: 15px;
+  padding: 10px 0 0 10px;
+  font-weight: 700;
+}
+
+#chainPage #links .linkBox .text {
+  font-family: 'Pt Serif', serif;
+  font-size: 13px;
+  padding: 5px 10px 5px 10px;
+  height: 47px;
+  color: #555;
+  overflow: hidden;
+  line-height: 17px;
+}
+
+#chainPage #links .linkBox .author {
+  float: right;
+  margin: -15px 10px 0 0;
+}
+
+#chainPage #links .linkBox .date {
+  float: right;
+  margin-right: 10px;
+  padding-top: 5px;
+}
+
+#chainPage .stats .updates {
+  color: #666;
+  font-size: 14px;
+}
+
+#chainPage .stats .updates ul {
+  margin-top: 8px;
+}
+
+#chainPage .stats .updates li {
+  margin: 0 0 5px 5px;
+}
+
+.members {
+  margin-top: 35px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.members .title {
+  font-weight: 700;
+  display: block;
+  margin-bottom: 5px;
+  color: #888;
+}
+
+.membersBox {
+  background: #fff;
+  padding: 25px 0 20px 0;
+}
+
+.membersBox p {
+  margin-bottom: 15px;
+}
 
 /* WYSIHTML5 */
 
