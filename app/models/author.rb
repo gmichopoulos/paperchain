@@ -25,4 +25,10 @@ class Author < ActiveRecord::Base
     find_by_penname(penname).try(:authenticate, password)
   end
 
+  def points
+    points = 0
+    points += 50*self.chains.length
+    points += 10*self.links.length
+  end
+
 end

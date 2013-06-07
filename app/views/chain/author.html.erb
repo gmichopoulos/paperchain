@@ -60,7 +60,7 @@
       <div class="write"><a href="#"><%= link_to 'Write!', :controller => 'link', :action => 'create', :chain => @next_chain.id %></a></div>
     <% else %>
     <h2>All of your chains are up to date!</h2>
-    <h2>Great Work!</h2>
+    <div class="write">Great Work!</div>
     <% end %>
   <% end %>
   <%= render :partial => "shared/header" %>
@@ -110,6 +110,10 @@
         <div class="stat">
           <p class="data"><%= @num_links %></p>
           <p class="label">TOTAL PAGES</p>
+        </div>
+        <div class="stat">
+          <p class="data"><%= @author.points %></p>
+          <p class="label">POINTS</p>
         </div>
       </aside>
     </div>
