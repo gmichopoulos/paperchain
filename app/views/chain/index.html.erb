@@ -58,7 +58,7 @@
       
         <% if s[:link_id] %>
           <a href="/link/index/<%= s[:link_id] %>" title="<p><%= Link.find( s[:link_id] ).title %></p><p><%= s[:date].to_date.to_formatted_s(:short) %></p><p><%= a.penname %></p>" >
-          <% if @successes[i] == @chain.authors.length %><img src='/images/vert-chain-mid-sel.png' /><% else %><img src='/images/vert-chain-mid.png' /><% end %>
+          <% if @successes[i] == @chain.authors.length && @chain.authors.length > 1 %><img src='/images/vert-chain-mid-sel.png' /><% else %><img src='/images/vert-chain-mid.png' /><% end %>
           </a>
         <% else %>
           <a title="<p><%= s[:date].to_date.to_formatted_s(:short) %></p><p><%= a.penname %></p>" >
@@ -106,6 +106,21 @@
     </div>
     <a href="#" class="invite">Invite a member!</a>
     <%= link_to '[leave this chain]', :controller => 'chain', :action => 'remove_self', :chain => @chain.id %>
+
+    <div class="statsContainer">
+      <span class="title">TOTAL STATS</span>
+      <aside class="statsBox">
+        <div class="stat">
+          <p class="data"><%= @chain.wordcount %></p>
+          <p class="label">WORD COUNT</p>
+        </div>
+        <div class="stat">
+          <p class="data"><%= @chain.links.count %></p>
+          <p class="label">TOTAL PAGES</p>
+        </div>
+      </aside>
+    </div>
+
   </div>
 </div>
 
