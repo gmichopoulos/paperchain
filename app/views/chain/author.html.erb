@@ -80,7 +80,7 @@
         <div class="left"></div><div class="center"><a href="#" class="newchain">start a new chain!</a></div><div class="right"></div>
       </div>
     </div>
-    <% @author.chains.each do |chain| %>
+    <% @author.chains.order('start_date DESC').each do |chain| %>
       <div class="chain">
         <div class="title"><a href="/chain/index/<%= chain.id %>"><%= chain.title %></a></div>
         <div class="links">
