@@ -7,6 +7,7 @@
         autoOpen: false,
         draggable: false,
         resizable: false,
+        width: 500,
         buttons: {
           "Register!": function() {
             $('#register_form').submit();
@@ -31,34 +32,32 @@
   </div>
 </div>
 <div id="splash_body" class="container_12">
-  <div id="banner" class="grid_12">
-    <div id="video" class="grid_5 alpha">
+    <!-- <div id="video" class="grid_5 alpha">
       <iframe id="demo_video" src="http://www.youtube.com/embed/A9bUlkcMtlA" frameborder="0" allowfullscreen=""></iframe>
-    </div>
-    <div id="login" class="grid_5 prefix_2 omega">
-      <div id="login_box">
-          <div id="login_flash">
-            <% if flash[:log_err] %> 
-             <h3 id="log_err"> <%= flash[:log_err] %> </h3> 
-            <% end %> 
-          </div>
-      <%= form_tag("/author/post_login", :method => "post") do %>
-        <%= label_tag(:login, "Penname") %> 
-        <%= text_field_tag(:penname) %> <br />
-        <%= label_tag(:login, "Password") %> 
-        <%= password_field_tag(:password) %> <br />
-        <%= submit_tag "Log In" %> <br /><br />
-        <a href="#" class="register">New to Paperchain? Register Now!</a>
-      <% end %>
-      </div>
-    </div>
-    <div id="description">
-
+    </div> -->
+  <div id="banner" class="grid_6 alpha">
+    <div id="description">Paperchain is a web-app that encourages writers to write consistently through the use of metrics, and the social pressure that only friends can provide.</div>
+  </div>
+  <div id="login" class="grid_5 prefix_1 omega">
+    <div id="login_box">
+        <div id="login_flash">
+          <% if flash[:log_err] %> 
+           <h3 id="log_err"> <%= flash[:log_err] %> </h3> 
+          <% end %> 
+        </div>
+    <%= form_tag("/author/post_login", :method => "post") do %>
+      <%= label_tag(:login, "Penname") %> 
+      <%= text_field_tag(:penname) %> <br />
+      <%= label_tag(:login, "Password") %> 
+      <%= password_field_tag(:password) %> <br />
+      <%= submit_tag "Log In" %> <br /><br />
+      <a href="#" class="register">New to Paperchain? Register Now!</a>
+    <% end %>
     </div>
   </div>
 </div>
 
-<div id="register-dialog">
+<div id="register-dialog" class="dialog" title="Your first writing assignment...">
   <div id="register_flash">
     <% if flash[:reg_err] %> 
      <h3 id="reg_err"> <%= flash[:reg_err] %> </h3> 
@@ -69,22 +68,27 @@
         <div class="section-left"><%= label_tag(:register, "Penname") %></div>
         <div class="section-right"><%= text_field_tag(:penname) %></div>      
       </div>
+      <div class="clear"></div>
       <div class="section">
         <div class="section-left"><%= label_tag(:register, "Password") %></div>
         <div class="section-right"><%= text_field_tag(:password) %></div>  
       </div>
+      <div class="clear"></div>
       <div class="section">
         <div class="section-left"><%= label_tag(:register, "Confirm Password") %></div>
         <div class="section-right"><%= text_field_tag(:password_confirmation) %></div>  
       </div>
+      <div class="clear"></div>
       <div class="section">
         <div class="section-left"><%= label_tag(:register, "First Name") %></div>
         <div class="section-right"><%= text_field_tag(:first_name) %></div>
       </div>
+      <div class="clear"></div>
       <div class="section">
         <div class="section-left"><%= label_tag(:register, "Last Name") %></div>
         <div class="section-right"><%= text_field_tag(:last_name) %></div>      
       </div>
+      <div class="clear"></div>
       <div class="section">
         <div class="section-left"><%= label_tag(:register, "Email") %></div>
         <div class="section-right"><%= text_field_tag(:email) %></div>      
