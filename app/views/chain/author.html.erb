@@ -57,7 +57,7 @@
       <div class="write"><a href="#"><%= link_to 'Write!', :controller => 'link', :action => 'create', :chain => @next_chain.id %></a></div>
     <% else %>
     <h2>All of your chains are up to date!</h2>
-    <div class="tip-noWrite">Great Work!</div>
+    <h2>Great Work!</h2>
     <% end %>
   <% end %>
   <%= render :partial => "shared/header" %>
