@@ -11,7 +11,7 @@ class ChainController < ApplicationController
     next_due = 7
     next_chain = nil
     author.chains.each do |chain|
-      if chain.end_time != "over"
+      if chain.num_left != 0
         for i in 0..6
           if chain.link_rate[(cur_day+i)%7] == "1" && i < next_due
             prev_link = nil
@@ -78,7 +78,7 @@ class ChainController < ApplicationController
 
     else
         flash[:notice] = "You have to log in to view an author page!"
-        redirect_to :controller => 'author', :action => 'login'
+        redirect_to :controller => 'home', :action => 'index'
     end 
   end
 
@@ -87,18 +87,16 @@ class ChainController < ApplicationController
     @chain.title = params[:title]
     @chain.authors << Author.find(session[:curr_author])
 
-    @chain.end_time = params[:ends]
+    @chain.end_type = params[:ends]
     if params[:ends] == "entries"
-      @chain.num_total = params[:entries]
+      @chain.num_left = params[:entries]
     elsif params[:ends] == "weeks"
-      @chain.num_total = params[:weeks]
+      @chain.num_left = params[:weeks]
     else
-      @chain.num_total = 0
+      @chain.num_left = 0
     end
 
     @chain.start_date = DateTime.now
-    @chain.num_links = 0
-
 
     link_rate = ''
     if params[:day0].to_i == 1
