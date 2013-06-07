@@ -3,7 +3,7 @@ class Link < ActiveRecord::Base
 	belongs_to :author
   belongs_to :chain
 
-  # def self.ordered(id)
-  #   return Chain.find(id).links.order("date");
-  # end
+  def wordcount 
+    self.link_text.split(' ').count
+  end
 end
