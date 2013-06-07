@@ -20,7 +20,7 @@ a:hover {
 }
 
 #logo {
-  padding-top: 10px;
+  padding-top: 23px;
 }
 
 #nav {
@@ -114,6 +114,8 @@ a:hover {
   font-style: italic;
   text-align: center;
   padding: 10px 0 15px 0;
+  text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.34);
+  font-weight: 700;
 }
 
 #banner .write a {
@@ -527,6 +529,24 @@ footer a {
 }
 
 #chainPage #links .linkBox:hover {
+  background: #ccc;
+}
+
+#chainPage #links .newLinkBox {
+  height: 60px;
+  background: #fff;
+  color: #888;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+#chainPage #links .newLinkBox p {
+  padding: 20px 0 0 20px;
+  font-size: 20px;
+  font-family: 'Merriweather Sans'
+}
+
+#chainPage #links .newLinkBox:hover {
   background: #ccc;
 }
 
