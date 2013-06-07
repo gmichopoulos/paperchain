@@ -1,10 +1,14 @@
 class ChainController < ApplicationController
 
-  before_filter :require_post, :only => [:post_chain]
+  before_filter :require_post, :only => [:create_chain, :post_invite]
 
   def index
     @chain = Chain.find(params[:id])
     @successes = @chain.successes
+  end
+
+  def post_invite
+    
   end
 
   def find_next_link(author)
