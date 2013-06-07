@@ -95,12 +95,12 @@
 
 <div class="container_12">
   <div class="grid_10 chains">
-    <% if @invitations.length != 0 %>
+    <% if @invitor != 0 %>
     <div class="chain">
       <div class="links"><img class="link" src="/images/chain-newchain.png" /></div>
       <div class="tip">
         <div class="left"></div><div class="center"><a href="#" class="invitation">
-          <%= Author.find(@invitations[0].invitor).penname %> wants you to join their chain!
+          <%= Author.find(@invitor).penname %> wants you to join their chain!
         </a></div><div class="right"></div>
       </div>
     </div>
@@ -151,7 +151,7 @@
   </div>
 </div>
 
-  <% if @invitations.length != 0 %>
+  <% if @invitor!= 0 %>
   <div id="invitation-dialog" class="dialog" title="Make a new chain!">
   <div id="invitation_flash">
     <% if flash[:invitation_err] %> 
@@ -159,13 +159,12 @@
     <% end %> 
   </div>
     <%= form_tag("/chain/respond_invitation", :id => "invitation_form", :method => "post") do %>
-      <%= text_field_tag(:title, nil, :placeholder => "Title") %>
       <div class="section">
-        <div class="section-left">Respond to <%= Author.find(@invitations[0].invitor).penname %> about joining chain <%= Chain.find(@invitations[0].chain).title %>:</div>
+        <div class="section-left">Respond to <%= Author.find(@invitor).penname %> about joining chain <%= Chain.find(@invite_chain).title %>:</div>
         <div class="section-right">
           <%= check_box_tag(:yes) %><%= label_tag :yes, "Yes - I would love to join!" %>
           <%= check_box_tag(:no) %><%= label_tag :no, "No - maybe another time." %>
-          <%= hidden_field_tag("invitation", @invitations[0].id) %>
+          <%= hidden_field_tag("invitation", @invite_id) %>
         </div>
       </div>
       <div class="clear"></div>

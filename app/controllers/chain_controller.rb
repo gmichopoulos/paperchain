@@ -82,9 +82,9 @@ class ChainController < ApplicationController
 
   def respond_invitation
     if params[:no] == 1
-      reject_invitation
+      reject_invitation(params[:invitation])
     else
-      accept_invitation
+      accept_invitation(params[:invitation])
     end
   end
 
@@ -96,7 +96,14 @@ class ChainController < ApplicationController
         @author = Author.find(id)
         @chains = @author.chains
 
-        @invitations = @author.invitations
+        invitations = @author.invitations
+        if invitations.length != 0
+          @invite_id = invitations[0].id
+          @invitor = invitations[0].invitor
+          @invite_chain = invitations[0].chain
+        else
+          @invitor = 0
+        end
 
         @num_links = 0
         @num_words = 0
