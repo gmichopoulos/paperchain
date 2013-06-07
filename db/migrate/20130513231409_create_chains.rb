@@ -5,6 +5,8 @@ class CreateChains < ActiveRecord::Migration
       t.string :link_rate
       t.integer :num_links
       t.string :title
+      t.string :end_time
+      t.integer :num_total
       t.timestamps
     end
   end
