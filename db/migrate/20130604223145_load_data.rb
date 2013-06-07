@@ -12,7 +12,7 @@ class LoadData < ActiveRecord::Migration
     sa.save(:validate => false)
 
     # Create initial chains
-    chain1 = Chain.new(:start_date => "2013-05-23 10:44:23", :link_rate => "0101010", :title => "Hemmingway's Angels", :end_type => "entries", :num_left =>"4")
+    chain1 = Chain.new(:start_date => "2013-05-23 10:44:23", :link_rate => "0101010", :title => "Hemingway's Angels", :end_type => "entries", :num_left =>"4")
     chain1.authors << ac
     chain1.authors << sa
     chain1.save
