@@ -158,6 +158,11 @@ a:hover {
   display: inline-block;
 }
 
+.tip-noWrite {
+  text-align: center;
+  margin-left: 10px;
+}
+
 .tip, .writeTip {
   display: inline-block;
   margin-left: 10px;
