@@ -8,6 +8,7 @@ class Author < ActiveRecord::Base
 
   has_many :links
   has_and_belongs_to_many :chains
+  has_many :invitations
 
   validates_presence_of :penname
   validates_presence_of :email

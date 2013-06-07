@@ -21,6 +21,27 @@
       if( $('#newchain_err').length ) {
         $('#newchain-dialog').dialog('open');
       }
+
+      $('#invitation-dialog').dialog({
+        modal: true,
+        autoOpen: false,
+        draggable: false,
+        resizable: false,
+        buttons: {
+          "Respond!": function() {
+            $('#invitation_form').submit();
+          }
+        }
+      });
+
+      $('a.invitation').click( function() {
+        $('#invitation-dialog').dialog('open');
+      });
+      
+      if( $('#invitation_err').length ) {
+        $('#invitation-dialog').dialog('open');
+      }
+
       var tip_adjust = 3;
 
       $('.ends').children('input[type="text"]').focus(function() {
@@ -74,13 +95,23 @@
 
 <div class="container_12">
   <div class="grid_10 chains">
+    <% if @invitations.length != 0 %>
+    <div class="chain">
+      <div class="links"><img class="link" src="/images/chain-newchain.png" /></div>
+      <div class="tip">
+        <div class="left"></div><div class="center"><a href="#" class="invitation">
+          <%= Author.find(@invitations[0].invitor).penname %> wants you to join their chain!
+        </a></div><div class="right"></div>
+      </div>
+    </div>
+    <% end %>
     <div class="chain">
       <div class="links"><img class="link" src="/images/chain-newchain.png" /></div>
       <div class="tip">
         <div class="left"></div><div class="center"><a href="#" class="newchain">start a new chain!</a></div><div class="right"></div>
       </div>
     </div>
-    <% @author.chains.each do |chain| %>
+    <% @author.chains.order('start_date DESC').each do |chain| %>
       <div class="chain">
         <div class="title"><a href="/chain/index/<%= chain.id %>"><%= chain.title %></a></div>
         <div class="links">
@@ -119,6 +150,28 @@
     </div>
   </div>
 </div>
+
+  <% if @invitations.length != 0 %>
+  <div id="invitation-dialog" class="dialog" title="Make a new chain!">
+  <div id="invitation_flash">
+    <% if flash[:invitation_err] %> 
+     <h3 id="invitation_err"> <%= flash[:invitation_err] %> </h3> 
+    <% end %> 
+  </div>
+    <%= form_tag("/chain/respond_invitation", :id => "invitation_form", :method => "post") do %>
+      <%= text_field_tag(:title, nil, :placeholder => "Title") %>
+      <div class="section">
+        <div class="section-left">Respond to <%= Author.find(@invitations[0].invitor).penname %> about joining chain <%= Chain.find(@invitations[0].chain).title %>:</div>
+        <div class="section-right">
+          <%= check_box_tag(:yes) %><%= label_tag :yes, "Yes - I would love to join!" %>
+          <%= check_box_tag(:no) %><%= label_tag :no, "No - maybe another time." %>
+          <%= hidden_field_tag("invitation", @invitations[0].id) %>
+        </div>
+      </div>
+      <div class="clear"></div>
+    <% end %>
+  </div>
+  <% end %>
 
   <div id="newchain-dialog" class="dialog" title="Make a new chain!">
   <div id="newchain_flash">
