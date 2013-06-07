@@ -47,7 +47,14 @@
 
 <% content_for :header do %>
   <% content_for :banner do %>
-    <h2>Next entry for <strong>Daily Project</strong> due at <strong>12:00 PM tomorrow</strong></h2>
+    <h2>Next entry for <strong><%= @next_chain.title %></strong> due at <strong>11:59 PM 
+      <% if @days_nc == 0 %>
+        today
+      <% elsif @days_nc == 1 %>
+        tomorrow
+      <% else %>
+        on <% Date.today + @days_nc %>
+      <% end %></strong></h2>
     <div class="write"><a href="#">Write!</a></div>
   <% end %>
   <%= render :partial => "shared/header" %>

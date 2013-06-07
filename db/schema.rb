@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(:version => 20130604223145) do
     t.string   "link_rate"
     t.integer  "num_links"
     t.string   "title"
+    t.string   "end_time"
+    t.integer  "num_total"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
