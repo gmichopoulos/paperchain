@@ -17,7 +17,10 @@
       $('a.newchain').click( function() {
         $('#newchain-dialog').dialog('open');
       });
-
+      
+      if( $('#newchain_err').length ) {
+        $('#newchain-dialog').dialog('open');
+      }
       var tip_adjust = 3;
 
       $('.ends').children('input[type="text"]').focus(function() {
@@ -114,6 +117,11 @@
 </div>
 
   <div id="newchain-dialog" class="dialog" title="Make a new chain!">
+  <div id="newchain_flash">
+    <% if flash[:newchain_err] %> 
+     <h3 id="newchain_err"> <%= flash[:newchain_err] %> </h3> 
+    <% end %> 
+  </div>
     <%= form_tag("/chain/create_chain", :id => "newchain_form", :method => "post") do %>
       <%= text_field_tag(:title, nil, :placeholder => "Title") %>
       <div class="section">

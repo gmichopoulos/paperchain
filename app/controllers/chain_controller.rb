@@ -139,10 +139,11 @@ class ChainController < ApplicationController
     @chain.link_rate = link_rate
 
     if @chain.save
-      puts @chain
       redirect_to :controller => :chain, :action => 'index', :id => @chain.id
     else
-      redirect_to :back
+      flash[:newchain_err] = @chain.errors.full_messages.to_sentence
+      redirect_to :controller => :chain, :action => 'author', :id => session[:curr_author]
+
     end
   end
 end

@@ -638,6 +638,10 @@ footer a {
   color: red;
 }
 
+#newchain_err {
+  color: red;
+}
+
 #splash_body #banner {
   margin-left: 0px;
 }
