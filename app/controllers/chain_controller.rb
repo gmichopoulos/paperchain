@@ -55,6 +55,39 @@ class ChainController < ApplicationController
     return next_chain, next_due
   end 
 
+  def accept_invitation
+    author = Author.find(session[:curr_author])
+    invitation = Invitation.find(params[:invitation])
+    author.chains << Chain.find(invitation.chain)
+    author.invitations.delete(invitation)
+    if author.save
+      redirect_to :controller => 'chain', :action => 'author', :id => session[:curr_author]
+    else
+      flash[:notice] = "Something went wrong on our end. Try updating invitations again!"
+      redirect_to :controller => 'chain', :action => 'author', :id => session[:curr_author]
+    end
+  end
+
+  def reject_invitation
+    author = Author.find(session[:curr_author])
+    invitation = Invitation.find(params[:invitation])
+    author.invitations.delete(invitation)
+    if author.save
+      redirect_to :controller => 'chain', :action => 'author', :id => session[:curr_author]
+    else
+      flash[:notice] = "Something went wrong on our end. Try updating invitations again!"
+      redirect_to :controller => 'chain', :action => 'author', :id => session[:curr_author]
+    end
+  end
+
+  def respond_invitation
+    if params[:no] == 1
+      reject_invitation
+    else
+      accept_invitation
+    end
+  end
+
   def author
     id = params[:id]
     if !id.nil?
@@ -62,6 +95,8 @@ class ChainController < ApplicationController
         
         @author = Author.find(id)
         @chains = @author.chains
+
+        @invitations = @author.invitations
 
         @num_links = 0
         @num_words = 0
@@ -97,7 +132,7 @@ class ChainController < ApplicationController
     redirect_to :controller => 'chain', :action => 'author', :id => session[:curr_author]
 
   end
-  
+
   def create_chain
     @chain = Chain.new
     @chain.title = params[:title]

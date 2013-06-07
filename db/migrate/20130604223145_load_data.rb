@@ -82,7 +82,9 @@ Sed laoreet scelerisque sapien sit amet egestas. Maecenas interdum dapibus nunc,
     link8.chain = chain1
     link8.save(:validate => false)
 
-
+    invitation1 = Invitation.new(:chain => 2, :invitor => 3)
+    invitation1.author = ac
+    invitation1.save
 
   end
 
@@ -90,5 +92,6 @@ Sed laoreet scelerisque sapien sit amet egestas. Maecenas interdum dapibus nunc,
     Author.delete_all
     Chain.delete_all
     Link.delete_all
+    Invitation.delete_all
   end
 end

@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(:version => 20130604223145) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "invitations", :force => true do |t|
+    t.integer  "author_id"
+    t.integer  "chain"
+    t.integer  "invitor"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "links", :force => true do |t|
     t.integer  "author_id"
     t.integer  "chain_id"
