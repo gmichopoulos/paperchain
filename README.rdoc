@@ -1,3 +1,4 @@
 == Paperchain
 Collaborative writing Rails app developed for CS194 Project in 2013.
 Hacked together in about a week, so functionality is pretty basic.
+Still managed to win 3rd place at CS Software Fair in June 2013!
